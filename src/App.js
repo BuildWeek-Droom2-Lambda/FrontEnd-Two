@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -10,10 +10,8 @@ import UpdateForm from "./Components/UpdateForm";
 import NoMatch from "./Components/NoMatch";
 
 import { axiosWithAuth } from "./Components/utils/axiosWithAuth";
-import { FriendsContext } from "./Contexts/FriendsContext";
 
 import "./App.css";
-import Header from "./Components/Header";
 
 // This component is handling all of the Navigation and routing for the application. It's sole purpose is to set the URL paths and render components based upon URL input.
 
@@ -21,8 +19,7 @@ const App = () => {
   const [friends, setFriends] = useState([]);
 
   const [isLoading, setIsLoading] = useState();
-
-  const history = useHistory();
+  \;
 
   useEffect(() => {
     axiosWithAuth()
