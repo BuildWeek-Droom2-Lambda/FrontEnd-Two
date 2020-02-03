@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# droom-frontend
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Contributing](../CONTRIBUTING.md)
 
-### `yarn start`
+## About <a name = "about">DROOM</a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    The droom app is LinkedIn meets Tinder for the professional
+    job seeker looking for their first job, or making a career change.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    On the flip side, it is also for medium to small businesses who
+    are tired of the endless search for good employees... Search
+    no more, let Droom do the heavy lifting!
 
-### `yarn test`
+## Getting Started <a name = "getting_started"></a>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Github Repo: <https://github.com/BuildWeek-Droom2-Lambda>
 
-### `yarn build`
+To hack our app:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. fork and clone the repo into a directory on your computer.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+2. cd into root directory of project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. checkout your own branch with the name: `feature <your-name-here`>
 
-### `yarn eject`
+4. run `yarn install` or `npm install` to install project dependencies.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. get a development server spinning up on localhost://3000.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. start making desired changes/ additions and hit save to trigger hot reload.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+7. push changes to your remote branch on origin
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+8. initiate a pull request and add one of the project admins as a reviewer
 
-## Learn More
+9. you will be notified once your code is reviewded and the changes are implemented
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+10. check the `issues` tab periodically to see what updates and functionality are needed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Code Splitting
+### Prerequisites
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### yarn package installer
 
-### Analyzing the Bundle Size
+`npm install yarn`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### axios
 
-### Making a Progressive Web App
+`yarn add axios`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### redux
 
-### Advanced Configuration
+`yarn add redux`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### react-router-dom
 
-### Deployment
+`yarn add react-router-dom`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### formik
 
-### `yarn build` fails to minify
+`yarn add formik`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### react-redux
+
+`yarn add reaxct-redux`
+
+## Usage <a name = "usage"></a>
+
+TODO-Add notes about how to use the system.

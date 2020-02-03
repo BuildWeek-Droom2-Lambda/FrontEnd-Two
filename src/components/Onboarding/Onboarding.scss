@@ -1,0 +1,73 @@
+.onboarding {
+    margin: 0 auto;
+
+    h1 {
+        font-size: 20rem;
+        color: #ffffff;
+        font-style: italic;
+    }
+
+    h2 {
+        font-size: 3rem;
+        color: #7851A9;
+        margin-top: -75px;
+    }
+
+    form {
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        
+        input,
+        select {
+            transition: .3s;
+            outline: none;
+            background-color: #666666;
+            color: #EEE;
+            width: 300px;
+            margin: 10px auto;
+            font-size: 2rem;
+            border-radius: 20px;
+            padding: 10px 15px;
+            border: 2px solid #49157D;
+
+                &:focus {
+                    transition: .3s;
+                    border: 2px solid #F9ED6C;
+                }
+        }
+            
+        select {
+            width: 330px;
+        }
+            
+        input::placeholder,
+        select::placeholder {
+            color: #999999;
+        }
+            
+        button {
+            outline: none;
+            transition: .3s;
+            font-size: 2rem;
+            color: #fff;
+            width: 100px;
+            margin: 20px auto;
+            background-color: #DAA443;
+            border: 2px solid #49157D;
+            border-radius: 20px;
+            padding: 5px 5px;
+
+                &:hover {
+                    transition: .3s;
+                    background-color: #F9C76C;
+                    cursor: pointer;
+                }
+        }
+            
+        p {
+            color: #fff;
+            font-size: 1.8rem;
+        }
+    }
+}
