@@ -1,0 +1,38 @@
+.landing-page {
+    margin: 0 auto;
+
+    h1 {
+        font-size: 20rem;
+        color: #ffffff;
+        font-style: italic;
+    }
+
+    h2 {
+        font-size: 3rem;
+        color: #7851A9;
+        margin-top: -75px;
+    }
+
+    .links {
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        background-color: #666666;
+        width: 200px;
+        border-radius: 25px;
+        padding: 20px 0;
+
+            a {
+                transition: .3s;
+                font-size: 2.5rem;
+                text-decoration: none;
+                color: #DAA443;
+                margin: 10px 0;
+
+                    &:hover {
+                        transition: .3s;
+                        color: #FFD893;
+                    }
+            }
+    }
+}
