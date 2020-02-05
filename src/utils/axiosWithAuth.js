@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
 
   return axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://droom-node-server.heroku.com/api",
     headers: {
       Authorization: token
     }
