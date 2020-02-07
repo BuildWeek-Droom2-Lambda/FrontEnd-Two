@@ -1,19 +1,6 @@
-import axios from "axios";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 import {
-  USER_REGISTER_START,
-  USER_REGISTER_SUCCESS,
-  USER_LOGIN_START,
-  USER_LOGIN_SUCCESS,
-  GET_JOBS_START,
-  GET_JOBS_SUCCESS,
-  ADD_JOBS_START,
-  ADD_JOBS_SUCCESS,
-  UPDATE_JOBS_START,
-  UPDATE_JOBS_SUCCESS,
-  DELETE_JOBS_START,
-  DELETE_JOBS_SUCCESS,
   GET_COMPANIES_START,
   GET_COMPANIES_SUCCESS,
   ADD_COMPANIES_START,
@@ -24,5 +11,3 @@ import {
   DELETE_COMPANIES_SUCCESS,
   FAILURE
 } from "./actions/__action-types";
-
-export const userRegister = () 

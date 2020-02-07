@@ -20,7 +20,7 @@ import {
   DELETE_COMPANIES_START,
   DELETE_COMPANIES_SUCCESS,
   FAILURE
-} from "../actions/index";
+} from "../actions/companies";
 
 export const initialState = {
   companies: [
@@ -50,7 +50,10 @@ export const initialState = {
       salary: null,
       company_id: null
     }
-  ]
+  ],
+
+  isLoading: false,
+  message: ""
 };
 
 export const rootReducer = (state = initialState, action) => {
