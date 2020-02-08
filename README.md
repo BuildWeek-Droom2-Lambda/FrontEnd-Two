@@ -70,6 +70,54 @@ See [deployment](#deployment) for notes on how to deploy the project on a live s
 
 `yarn add reaxct-redux`
 
-## Usage <a name = "usage"></a>
+## Usage
 
-TODO-Add notes about how to use the system.
+### State
+
+```javascript
+
+  users: {
+    userType: {
+      company: [
+        {
+          company_id: null,
+          username: "",
+          password: "",
+          name: "",
+          location: "",
+          bio: ""
+        }
+      ],
+      seeker: [
+        {
+          seeker_id: null,
+          username: "",
+          password: "",
+          name: "",
+          location: "",
+          skills: "",
+          experience: ""
+        }
+      ]
+    }
+  },
+
+  jobs: [
+    {
+      name: "",
+      location: "",
+      description: "",
+      salary: null,
+      company_id: null,
+      job_id: null
+    }
+  ],
+
+  isLoading: false,
+
+  isUpdating: false,
+
+  message: ""
+};
+
+```
