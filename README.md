@@ -72,4 +72,46 @@ See [deployment](#deployment) for notes on how to deploy the project on a live s
 
 ## Usage <a name = "usage"></a>
 
-TODO-Add notes about how to use the system.
+## State : 
+
+### users: {
+
+#### User-Type-Jobs: 
+[{
+name: '',
+location: '',
+salary: 0,
+company_id: 0
+}]
+
+#### User-Type-Seekers: 
+[{
+username: '',
+password: '',
+name: '',
+location: '',
+skills: '',
+experience: ''
+}]
+}
+
+### companies: 
+[{
+company_id: 0,
+username: '',
+password: '',
+name: '',
+location: '',
+skills: '',
+experience: ''
+}]
+
+### Jobs :
+[{
+company_id: 0,
+job_id: 0,
+name: '',
+location: '',
+description: '',
+salary: 0
+}]
