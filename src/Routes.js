@@ -9,6 +9,8 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import NoMatch from "./components/Utility/NoMatch";
 import FormikOnboarding from "./components/Onboarding/Onboarding";
 
+import "./styles/styles.css";
+
 // This component is handling all of the Navigation and routing for the application. It's sole purpose is to set the URL paths and render components based upon URL input.
 
 const Routes = () => {
@@ -17,9 +19,6 @@ const Routes = () => {
       <Switch>
         <Route exact path="/">
           <LandingPage />
-        </Route>
-        <Route path="/login">
-          <Login />
         </Route>
         <Route path="/onboarding">
           <FormikOnboarding />

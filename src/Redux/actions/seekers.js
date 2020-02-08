@@ -14,8 +14,7 @@ import {
 
 export const getSeeker = () => dispatch => {
   dispatch({
-    type: GET_SEEKERS_START,
-    isLoading: true
+    type: GET_SEEKERS_START
   });
   axiosWithAuth()
     .get("/companies")
@@ -23,16 +22,14 @@ export const getSeeker = () => dispatch => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
         type: GET_SEEKERS_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };
@@ -40,7 +37,6 @@ export const getSeeker = () => dispatch => {
 export const getSeekerById = id => dispatch => {
   dispatch({
     type: GET_SEEKER_BY_ID_START,
-    isLoading: true,
     id
   });
   axiosWithAuth()
@@ -49,16 +45,14 @@ export const getSeekerById = id => dispatch => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
         type: GET_SEEKER_BY_ID_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };
@@ -66,7 +60,6 @@ export const getSeekerById = id => dispatch => {
 export const updateSeeker = (id, updateSeeker) => dispatch => {
   dispatch({
     type: UPDATE_SEEKER_START,
-    isLoading: true,
     id,
     updateSeeker
   });
@@ -76,16 +69,14 @@ export const updateSeeker = (id, updateSeeker) => dispatch => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
         type: UPDATE_SEEKER_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };
@@ -93,7 +84,6 @@ export const updateSeeker = (id, updateSeeker) => dispatch => {
 export const deleteSeeker = id => dispatch => {
   dispatch({
     type: DELETE_SEEKER_START,
-    isLoading: true,
     id
   });
   axiosWithAuth()
@@ -102,16 +92,14 @@ export const deleteSeeker = id => dispatch => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
         type: DELETE_SEEKER_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };

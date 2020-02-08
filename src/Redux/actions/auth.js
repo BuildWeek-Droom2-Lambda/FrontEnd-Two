@@ -22,7 +22,6 @@ export const userRegister = () => dispatch {
       dispatch({ 
         type: USER_REGISTER_SUCCESS, 
         payload: res.data, 
-        isLoading: false
       })
     })
     .catch(err => {
@@ -30,7 +29,6 @@ export const userRegister = () => dispatch {
       dispatch({
         type: FAILURE,
         payload: err,
-        isLoading: false 
       })
     })
 }
@@ -38,7 +36,6 @@ export const userRegister = () => dispatch {
 export const userLogin = (e, user ) => dispatch {
   dispatch({ 
     type: USER_LOGIN_START,
-    isLoading: true,
     user
   });
   axiosWithAuth()
@@ -49,7 +46,6 @@ export const userLogin = (e, user ) => dispatch {
       type: USER_LOGIN_SUCCESS, 
       payload: res.data.user, 
       message: `SUCCESS! ${res.data.user} was returned`,
-      isLoading: false
     })
   })
   .catch(err => {
@@ -58,7 +54,6 @@ export const userLogin = (e, user ) => dispatch {
       type: FAILURE,
       payload: err,
       message: `ERROR: ${err} was returned`,
-      isLoading: false
     })
   })
 }

@@ -68,5 +68,11 @@ export const initialState = {
 };
 
 export const rootReducer = (state = initialState, action) => {
+  console.log("From the Reducer: ", action.type, action.payload);
+
+  switch (action.type) {
+    case USER_REGISTER_START:
+      return { ...state, message: "BEGINNING API CALL... ", isLoading: true };
+  }
   return initialState;
 };

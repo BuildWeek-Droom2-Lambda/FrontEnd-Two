@@ -14,8 +14,7 @@ import {
 
 export const getCompany = () => dispatch => {
   dispatch({
-    type: GET_COMPANIES_START,
-    isLoading: true
+    type: GET_COMPANIES_START
   });
   axiosWithAuth()
     .get("/companies")
@@ -23,16 +22,14 @@ export const getCompany = () => dispatch => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
         type: GET_COMPANIES_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };
@@ -40,8 +37,7 @@ export const getCompany = () => dispatch => {
 export const getCompanyById = id => dispatch => {
   dispatch({
     type: GET_COMPANY_BY_ID_START,
-    id,
-    isLoading: true
+    id
   });
   axiosWithAuth()
     .get(`/companies/${id}`)
@@ -49,24 +45,21 @@ export const getCompanyById = id => dispatch => {
       console.log("Result of GET company by ID: ", res.data);
       dispatch({
         type: GET_COMPANY_BY_ID_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: ", err);
       dispatch({
         type: FAILURE,
-        payload: `${err} ${err.response}`,
-        isLoading: false
+        payload: `${err} ${err.response}`
       });
     });
 };
 
 export const updateCompany = (id, editCompany) => dispatch => {
   dispatch({
-    type: UPDATE_COMPANY_START,
-    isLoading: true
+    type: UPDATE_COMPANY_START
   });
   axiosWithAuth()
     .put(`/companies/smurfs/${id}`, editCompany)
@@ -74,21 +67,22 @@ export const updateCompany = (id, editCompany) => dispatch => {
       console.log("This is the result of a put request to the API: ", res.data);
       dispatch({
         type: UPDATE_COMPANY_SUCCESS,
-        payload: res.data,
-        isLoading: false
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: data not sent to API via PUT! ", err);
-      dispatch({ type: FAILURE, payload: err.message, isLoading: false });
+      dispatch({
+        type: FAILURE,
+        payload: err.message
+      });
     });
 };
 
 export const deleteCompany = id => dispatch => {
   dispatch({
     type: DELETE_COMPANY_START,
-    id,
-    isLoading: true
+    id
   });
   axiosWithAuth()
     .delete(`http://localhost:3333/smurfs/${id}`)
@@ -96,16 +90,14 @@ export const deleteCompany = id => dispatch => {
       console.log("This is the result of a delete request to the API: ", res);
       dispatch({
         type: DELETE_COMPANY_SUCCESS,
-        payload: res.data,
-        isLoading: true
+        payload: res.data
       });
     })
     .catch(err => {
       console.log("ERROR: Company not deleted! ", err.message);
       dispatch({
         type: FAILURE,
-        payload: err.message,
-        isLoading: false
+        payload: err.message
       });
     });
 };
