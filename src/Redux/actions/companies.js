@@ -1,16 +1,18 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-import {
-  GET_COMPANIES_START,
-  GET_COMPANIES_SUCCESS,
-  GET_COMPANY_BY_ID_START,
-  GET_COMPANY_BY_ID_SUCCESS,
-  UPDATE_COMPANY_START,
-  UPDATE_COMPANY_SUCCESS,
-  DELETE_COMPANY_START,
-  DELETE_COMPANY_SUCCESS,
-  FAILURE
-} from "./__action-types";
+export const GET_COMPANIES_START = "GET_COMPANIES_START";
+export const GET_COMPANIES_SUCCESS = "GET_COMPANIES_START";
+
+export const GET_COMPANY_BY_ID_START = "GET_JOBS_BY_ID_START";
+export const GET_COMPANY_BY_ID_SUCCESS = "GET_JOBS_BY_ID_SUCCESS";
+
+export const UPDATE_COMPANY_START = "UPDATE_COMPANY_START";
+export const UPDATE_COMPANY_SUCCESS = "UPDATE_COMPANY_SUCCESS";
+
+export const DELETE_COMPANY_START = "DELETE_COMPANY_START";
+export const DELETE_COMPANY_SUCCESS = "DELETE_COMPANY_SUCCESS";
+
+export const COMPANIES_FAILURE = "COMPANIES_FAILURE";
 
 export const getCompany = () => dispatch => {
   dispatch({
@@ -28,7 +30,7 @@ export const getCompany = () => dispatch => {
     .catch(err => {
       console.log("ERROR: data not recieved from server ", err.response);
       dispatch({
-        type: FAILURE,
+        type: COMPANIES_FAILURE,
         payload: `${err} ${err.response}`
       });
     });
@@ -51,7 +53,7 @@ export const getCompanyById = id => dispatch => {
     .catch(err => {
       console.log("ERROR: ", err);
       dispatch({
-        type: FAILURE,
+        type: COMPANIES_FAILURE,
         payload: `${err} ${err.response}`
       });
     });
@@ -73,7 +75,7 @@ export const updateCompany = (id, editCompany) => dispatch => {
     .catch(err => {
       console.log("ERROR: data not sent to API via PUT! ", err);
       dispatch({
-        type: FAILURE,
+        type: COMPANIES_FAILURE,
         payload: err.message
       });
     });
@@ -96,7 +98,7 @@ export const deleteCompany = id => dispatch => {
     .catch(err => {
       console.log("ERROR: Company not deleted! ", err.message);
       dispatch({
-        type: FAILURE,
+        type: COMPANIES_FAILURE,
         payload: err.message
       });
     });

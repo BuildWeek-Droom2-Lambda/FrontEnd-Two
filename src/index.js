@@ -1,14 +1,31 @@
 import React from "react";
 import reactDOM from "react-dom";
 
+import { createStore, applyMiddleware } from "redux";
+import { rootReducer } from "./Redux/reducers/index";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+
 import { BrowserRouter as Router } from "react-router-dom";
 
-import store from "./Redux/store";
 import { Provider } from "react-redux";
 
 import "./styles/styles.css";
 
 import Routes from "./Routes";
+
+const actionsLogger = ({ getState }) => next => action => {
+  console.log("Dispatching this type of action: ", action);
+  console.log("Current State: ", getState());
+  next(action);
+};
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk, actionsLogger))
+);
+
+export default store;
 
 reactDOM.render(
   <Provider store={store}>

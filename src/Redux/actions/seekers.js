@@ -1,16 +1,18 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-import {
-  GET_SEEKERS_START,
-  GET_SEEKERS_SUCCESS,
-  GET_SEEKER_BY_ID_START,
-  GET_SEEKER_BY_ID_SUCCESS,
-  UPDATE_SEEKER_START,
-  UPDATE_SEEKER_SUCCESS,
-  DELETE_SEEKER_START,
-  DELETE_SEEKER_SUCCESS,
-  FAILURE
-} from "./__action-types";
+export const GET_SEEKERS_START = "GET_SEEKERS_START";
+export const GET_SEEKERS_SUCCESS = "GET_SEEKERS_START";
+
+export const GET_SEEKER_BY_ID_START = "GET_SEEKERS_BY_ID_START";
+export const GET_SEEKER_BY_ID_SUCCESS = "GET_SEEKERS_BY_ID_SUCCESS";
+
+export const UPDATE_SEEKER_START = "UPDATE_SEEKER_START";
+export const UPDATE_SEEKER_SUCCESS = "UPDATE_SEEKER_SUCCESS";
+
+export const DELETE_SEEKER_START = "DELETE_SEEKER_START";
+export const DELETE_SEEKER_SUCCESS = "DELETE_SEEKER_SUCCESS";
+
+export const SEEKERS_FAILURE = "SEEKERS_FAILURE";
 
 export const getSeeker = () => dispatch => {
   dispatch({
