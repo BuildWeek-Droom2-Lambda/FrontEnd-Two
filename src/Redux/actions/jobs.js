@@ -1,3 +1,5 @@
+import { axiosWithAuth } from '../../utils/axiosWithAuth'
+
 import {
   GET_JOBS_START,
   GET_JOBS_SUCCESS,

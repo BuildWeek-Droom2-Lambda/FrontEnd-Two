@@ -22,38 +22,47 @@ import {
   FAILURE
 } from "../actions/companies";
 
-export const initialState = {
-  companies: [
-    {
-      id: null,
-      name: "",
-      password: "",
-      location: "",
-      bio: ""
+export const initialState = {\
+
+  users: {
+    userType: {
+      company: [
+        {
+          id: null,
+          name: "",
+          password: "",
+          location: "",
+          bio: ""
+        }
+      ],
+      seeker: [
+        {
+          id: null,
+          name: "",
+          password: "",
+          location: "",
+          skills: "",
+          experience: ""
+        }
+      ]
     }
-  ],
-  seekers: [
-    {
-      id: null,
-      name: "",
-      password: "",
-      location: "",
-      skills: "",
-      experience: ""
-    }
-  ],
+  },
+
   jobs: [
     {
       name: "",
       location: "",
       description: "",
       salary: null,
-      company_id: null
+      company_id: null,
+      job_id: null 
     }
   ],
 
   isLoading: false,
+
   message: ""
+  
 };
 
 export const rootReducer = (state = initialState, action) => {

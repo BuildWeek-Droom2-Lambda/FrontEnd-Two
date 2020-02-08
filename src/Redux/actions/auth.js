@@ -10,31 +10,46 @@ import {
 
 
 export const userRegister = () => dispatch {
-    dispatch({ type: USER_REGISTER_START });
+    dispatch({ 
+      type: USER_REGISTER_START,
+      isLoading: true 
+    });
     axios
     .post('https://droom-node-server.herokuapp.com/api/auth/register', data)
     .then(res => {
       console.log('Result of user registration: ', res)
       localStorage.setItem("token", res.data.token);
-      dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data })
+      dispatch({ 
+        type: USER_REGISTER_SUCCESS, 
+        payload: res.data, 
+        isLoading: false
+      })
     })
     .catch(err => {
       console.log('Registration-Error: ',err);
       dispatch({
         type: FAILURE,
-        payload: err 
+        payload: err,
+        isLoading: false 
       })
     })
 }
 
-export const userLogin = () => dispatch {
-  dispatch({ type: USER_LOGIN_START });
+export const userLogin = (e, user ) => dispatch {
+  dispatch({ 
+    type: USER_LOGIN_START,
+    isLoading: true,
+    user
+  });
   axiosWithAuth()
-  .post('auth/login', credentials)
+  .post('auth/login', user.username, user.password)
   .then(res => {
-    localStorage.setItem("token", res.data.token);
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: 
-   res.data.user, message: `SUCCESS! ${res.data.user} was returned`
+    localStorage.setItem("token", res.data.payload);
+    dispatch({ 
+      type: USER_LOGIN_SUCCESS, 
+      payload: res.data.user, 
+      message: `SUCCESS! ${res.data.user} was returned`,
+      isLoading: false
     })
   })
   .catch(err => {
@@ -42,7 +57,8 @@ export const userLogin = () => dispatch {
     dispatch({
       type: FAILURE,
       payload: err,
-      message: `ERROR: ${err} was returned`
+      message: `ERROR: ${err} was returned`,
+      isLoading: false
     })
   })
 }
