@@ -1,5 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
+//  action type variables for companies API endpoint interaction
 export const GET_COMPANIES_START = "GET_COMPANIES_START";
 export const GET_COMPANIES_SUCCESS = "GET_COMPANIES_START";
 
@@ -14,6 +15,7 @@ export const DELETE_COMPANY_SUCCESS = "DELETE_COMPANY_SUCCESS";
 
 export const COMPANIES_FAILURE = "COMPANIES_FAILURE";
 
+// action creator for .get request. Returns an array of companies
 export const getCompany = () => dispatch => {
   dispatch({
     type: GET_COMPANIES_START
@@ -36,6 +38,7 @@ export const getCompany = () => dispatch => {
     });
 };
 
+//  action creator for getting a specific company by company_id. returns id, name, location, and bio of company
 export const getCompanyById = id => dispatch => {
   dispatch({
     type: GET_COMPANY_BY_ID_START,
@@ -59,6 +62,7 @@ export const getCompanyById = id => dispatch => {
     });
 };
 
+//  action creator for .put request to update a company. returns id and name of updated company
 export const updateCompany = (id, editCompany) => dispatch => {
   dispatch({
     type: UPDATE_COMPANY_START
@@ -81,6 +85,8 @@ export const updateCompany = (id, editCompany) => dispatch => {
     });
 };
 
+//  action creator for .delete request to remove a company from the database. returns 1 if successful.
+//  WARNING: deleting a company also deletes all jobs associated with the company by company_id
 export const deleteCompany = id => dispatch => {
   dispatch({
     type: DELETE_COMPANY_START,

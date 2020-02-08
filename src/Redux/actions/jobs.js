@@ -1,5 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
+//  action type variables for interacting with the API /jobs endpoint.
 export const GET_JOBS_START = "GET_JOBS_START";
 export const GET_JOBS_SUCCESS = "GET_JOBS_START";
 
@@ -17,6 +18,7 @@ export const DELETE_JOB_SUCCESS = "DELETE_JOB_SUCCESS";
 
 export const JOBS_FAILURE = "JOBS_FAILURE";
 
+//  action creator for .get request. returns array of jobs.
 export const getJobs = () => dispatch => {
   dispatch({
     type: GET_JOBS_START
@@ -40,6 +42,7 @@ export const getJobs = () => dispatch => {
     });
 };
 
+//  action creator for getting a specific job by id. returns id, name, location, description, and company_id of the job
 export const getJobsById = id => dispatch => {
   dispatch({
     type: GET_JOB_BY_ID_START
@@ -62,6 +65,7 @@ export const getJobsById = id => dispatch => {
     });
 };
 
+//  action creator for .post request to create a new job. returns updated job array.
 export const addJob = newJob => dispatch => {
   dispatch({
     type: ADD_JOB_START
@@ -84,6 +88,7 @@ export const addJob = newJob => dispatch => {
     });
 };
 
+//  action creator for .put request to update a specific job. returns updated job object.
 export const updateJob = (id, updateJob) => dispatch => {
   dispatch({
     type: UPDATE_JOB_START
@@ -106,6 +111,7 @@ export const updateJob = (id, updateJob) => dispatch => {
     });
 };
 
+//  action creator for .delete request to delete a job. returns 1 if successful
 export const deleteJob = id => dispatch => {
   dispatch({ type: DELETE_JOB_START, id });
   axiosWithAuth()

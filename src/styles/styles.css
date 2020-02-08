@@ -78,13 +78,18 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+#root {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+#root {
+  height: auto;
 }
 
 article,
@@ -101,8 +106,11 @@ section {
   display: block;
 }
 
-body {
-  line-height: 1.5;
+body,
+html,
+#root {
+  line-height: 1.34;
+  height: auto;
 }
 
 ol,
@@ -131,13 +139,14 @@ table {
 .App {
   text-align: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   background-color: #333333;
 }
 
 .landing-page {
   margin: 0 auto;
   width: 100vw;
+  height: auto;
 }
 .landing-page h1 {
   font-size: 20rem;

@@ -1,5 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
+//  action type variables for saved matches API endpoint interaction
 export const GET_SAVED_COMPANIES_START = "GET_SAVED_START";
 export const GET_SAVED_COMPANIES_SUCCESS = "GET_SAVED_START";
 
@@ -23,6 +24,7 @@ export const DELETE_SAVED_SEEKER_SUCCESS = "DELETE_SAVED_SUCCESS";
 
 export const SAVED_FAILURE = "SAVED_FAILURE";
 
+//  action creator for .get request to get the array of companies that have matched with a seeker
 export const getSavedCompanies = id => dispatch => {
   dispatch({
     type: GET_SAVED_COMPANIES_START,
@@ -46,6 +48,7 @@ export const getSavedCompanies = id => dispatch => {
     });
 };
 
+// action creator for .get request to get the array of seekers that have matched with a company
 export const getSavedSeekers = id => dispatch => {
   dispatch({
     type: GET_SAVED_SEEKERS_START,
@@ -69,6 +72,7 @@ export const getSavedSeekers = id => dispatch => {
     });
 };
 
+//  action creator to get a specific matched company by its company_id
 export const getSavedCompanyById = id => dispatch => {
   dispatch({
     type: GET_SAVED_COMPANY_BY_ID_START
@@ -91,6 +95,7 @@ export const getSavedCompanyById = id => dispatch => {
     });
 };
 
+//  action creator to get a specific seeker by its id
 export const getSavedSeekerById = id => dispatch => {
   dispatch({
     type: GET_SAVED_SEEKER_BY_ID_START
@@ -113,6 +118,7 @@ export const getSavedSeekerById = id => dispatch => {
     });
 };
 
+//  action creator to handle when a seeker and a job match. returns the job object.
 export const addSaved = (id, newSave) => dispatch => {
   dispatch({
     type: ADD_SAVED_START,
