@@ -84,6 +84,7 @@ salary: 0,
 company_id: 0
 }]
 
+
 #### User-Type-Seekers: 
 [{
 username: '',
