@@ -2,39 +2,18 @@
   margin: 0 auto;
   width: 100vw;
   height: auto;
-
+  color: #ffffff;
   h1 {
-    font-size: 20rem;
+    font-size: 15rem;
     color: #ffffff;
     font-style: italic;
+    margin-bottom: 2rem;
   }
 
   h2 {
     font-size: 3rem;
     color: #7851a9;
     margin-top: -75px;
-  }
-
-  .links {
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #666666;
-    width: 200px;
-    border-radius: 25px;
-    padding: 20px 0;
-
-    a {
-      transition: 0.3s;
-      font-size: 2.5rem;
-      text-decoration: none;
-      color: #daa443;
-      margin: 10px 0;
-
-      &:hover {
-        transition: 0.3s;
-        color: #ffd893;
-      }
-    }
+    margin-bottom: 2rem;
   }
 }

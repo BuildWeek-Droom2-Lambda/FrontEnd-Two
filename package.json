@@ -21,7 +21,8 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
-    "yup": "^0.28.1"
+    "yup": "^0.28.1",
+    "lodash-es": "^4.17.11"
   },
   "scripts": {
     "start": "react-scripts start",

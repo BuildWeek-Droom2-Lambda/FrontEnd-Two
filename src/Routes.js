@@ -3,11 +3,11 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage/LandingPage";
-import Login from "./components/Login/Login";
 import DroomList from "./components/DroomList/DroomList";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import NoMatch from "./components/Utility/NoMatch";
-import FormikOnboarding from "./components/Onboarding/Onboarding";
+
+import Register from "./components/UserAuth/Register";
 
 import "./styles/styles.css";
 
@@ -20,11 +20,12 @@ const Routes = () => {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route path="/onboarding">
-          <FormikOnboarding />
+
+        <Route path="/register">
+          <Register />
         </Route>
+
         <ProtectedRoute exact path="/droom-list" component={DroomList} />
-        {/* <ProtectedRoute exact path='/matches' component={Matches} />  */}
 
         <Route component={NoMatch} />
       </Switch>

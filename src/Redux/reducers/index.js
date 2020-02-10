@@ -47,40 +47,41 @@ import {
 } from "../actions/saved";
 
 export const initialState = {
-  users: {
-    userType: {
-      company: [
-        {
-          company_id: null,
-          username: "",
-          password: "",
-          name: "",
-          location: "",
-          bio: ""
-        }
-      ],
-      seeker: [
-        {
-          seeker_id: null,
-          username: "",
-          password: "",
-          name: "",
-          location: "",
-          skills: "",
-          experience: ""
-        }
-      ]
+  user: [
+    {
+      name: "",
+      password: "",
+      type: ""
     }
-  },
+  ],
+
+  companies: [
+    {
+      id: null,
+      name: "",
+      location: "",
+      bio: ""
+    }
+  ],
+
+  seekers: [
+    {
+      id: null,
+      name: "",
+      location: "",
+      skills: "",
+      experience: ""
+    }
+  ],
 
   jobs: [
     {
+      id: null,
       name: "",
       location: "",
       description: "",
       salary: null,
-      company_id: null,
-      job_id: null
+      company_id: null
     }
   ],
 
@@ -106,7 +107,8 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         message: "USER DATA RETRIEVED",
-        isLoading: false
+        isLoading: false,
+        user: action.payload
       };
 
     case USER_LOGIN_START:
@@ -119,7 +121,8 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         message: "USER LOGGED IN",
-        isLoading: false
+        isLoading: false,
+        user: action.payload
       };
 
     case USER_FAILURE:
@@ -140,6 +143,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         message: "USER DATA RETRIEVED",
+        companies: action.payload,
         isLoading: false
       };
 
@@ -186,8 +190,10 @@ export const rootReducer = (state = initialState, action) => {
     case GET_JOBS_SUCCESS:
       console.log(action.payload);
       return {
-        message: "USER DATA RETRIEVED",
-        isLoading: false
+        ...state,
+        message: "JOB DATA RETRIEVED",
+        isLoading: false,
+        jobs: action.payload
       };
 
     case ADD_JOB_START:

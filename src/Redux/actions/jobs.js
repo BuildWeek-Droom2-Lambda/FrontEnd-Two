@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axios from "axios";
 
 //  action type variables for interacting with the API /jobs endpoint.
 export const GET_JOBS_START = "GET_JOBS_START";
