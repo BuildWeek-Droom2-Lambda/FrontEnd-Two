@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSprings, animated, interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
-import "./styles.scss";
 
 const cards = [
   "https://upload.wikimedia.org/wikipedia/en/f/f5/RWS_Tarot_08_Strength.jpg",
@@ -20,6 +19,7 @@ const to = i => ({
   rot: -10 + Math.random() * 20,
   delay: i * 100
 });
+
 const from = i => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
 // This is being used down there in the view, it interpolates rotation and scale into a css transform
@@ -27,7 +27,7 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
-function DroomList() {
+function UI() {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [props, set] = useSprings(cards.length, i => ({
     ...to(i),
@@ -88,4 +88,4 @@ function DroomList() {
   ));
 }
 
-export default DroomList;
+export default UI;

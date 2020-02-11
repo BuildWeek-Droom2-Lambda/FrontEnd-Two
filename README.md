@@ -70,49 +70,55 @@ See [deployment](#deployment) for notes on how to deploy the project on a live s
 
 `yarn add reaxct-redux`
 
-## Usage <a name = "usage"></a>
 
-## State : 
+## Usage
 
-### users: {
+### State
 
-#### User-Type-Jobs: 
-[{
-name: '',
-location: '',
-salary: 0,
-company_id: 0
-}]
+```javascript
 
+  users: {
+    userType: {
+      company: [
+        {
+          company_id: null,
+          username: "",
+          password: "",
+          name: "",
+          location: "",
+          bio: ""
+        }
+      ],
+      seeker: [
+        {
+          seeker_id: null,
+          username: "",
+          password: "",
+          name: "",
+          location: "",
+          skills: "",
+          experience: ""
+        }
+      ]
+    }
+  },
 
-#### User-Type-Seekers: 
-[{
-username: '',
-password: '',
-name: '',
-location: '',
-skills: '',
-experience: ''
-}]
-}
+  jobs: [
+    {
+      name: "",
+      location: "",
+      description: "",
+      salary: null,
+      company_id: null,
+      job_id: null
+    }
+  ],
 
-### companies: 
-[{
-company_id: 0,
-username: '',
-password: '',
-name: '',
-location: '',
-skills: '',
-experience: ''
-}]
+  isLoading: false,
 
-### Jobs :
-[{
-company_id: 0,
-job_id: 0,
-name: '',
-location: '',
-description: '',
-salary: 0
-}]
+  isUpdating: false,
+
+  message: ""
+};
+
+```
