@@ -16,19 +16,21 @@ export const USER_FAILURE = "USER_FAILURE";
 
 export const userRegister = newUser => dispatch => {
   dispatch({
-    type: USER_REGISTER_START
+    type: USER_REGISTER_START,
+    payload: newUser
   });
   axios
     .post("https://droom-node-server.herokuapp.com/api/register", newUser)
     .then(res => {
+      localStorage.setItem("userid", res.data.id);
       dispatch({
         type: USER_REGISTER_SUCCESS,
         payload: res.data
       });
-      console.log("Result of user registration: ", res.message);
+      console.log("Result of user registration: ", res.data);
     })
     .catch(err => {
-      console.log("Registration-Error: ", err);
+      console.log("Registration-Error: ", err.message);
       dispatch({
         type: USER_FAILURE,
         payload: err.message
@@ -47,7 +49,7 @@ export const userLogin = newUser => dispatch => {
       localStorage.setItem("token", res.data.token);
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: res.data.user,
+        payload: res.data,
         message: `SUCCESS! ${res.data} was returned`
       });
     })

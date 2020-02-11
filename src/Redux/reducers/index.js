@@ -47,7 +47,7 @@ import {
 } from "../actions/saved";
 
 export const initialState = {
-  user: null,
+  user: {},
 
   companies: [],
 
@@ -74,11 +74,19 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case USER_REGISTER_SUCCESS:
-      return {
-        message: "USER DATA RETRIEVED",
-        isLoading: false,
-        user: action.payload.user
-      };
+      if (action.payload.type === "seeker") {
+        return {
+          message: `USER SAVED, WELCOME SEEKER ${action.payload.name}`,
+          isLoading: false,
+          user: action.payload,
+          seekers: [action.payload]
+        };
+      } else
+        return {
+          message: `USER SAVED, WELCOME COMPANY ${action.payload.name}`,
+          isLoading: false,
+          companies: [action.payload]
+        };
 
     case USER_LOGIN_START:
       return {
@@ -90,8 +98,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         message: "USER LOGGED IN",
-        isLoading: false,
-        user: action.payload.user
+        isLoading: false
       };
 
     case USER_FAILURE:

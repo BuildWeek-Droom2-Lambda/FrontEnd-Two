@@ -2,7 +2,6 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import Login from "./components/UserAuth/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
 import SeekerMain from "./components/Main_UI/SeekerMain";
 import CompanyMain from "./components/Main_UI/CompanyMain";

@@ -132,45 +132,6 @@ table {
   border-spacing: 0;
 }
 
-.landing-page {
-  margin: 0 auto;
-  height: auto;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-}
-.landing-page h1 {
-  font-size: 15rem;
-  color: #ffffff;
-  font-style: italic;
-  margin-bottom: 1.2rem;
-}
-.landing-page h2 {
-  font-size: 3rem;
-  color: #7851a9;
-  margin-bottom: 1.2rem;
-  margin-top: -75px;
-}
-.landing-page a {
-  font-size: 10pt;
-  text-decoration: none;
-  color: #ffffff;
-  border: 1px solid white;
-  width: 4%;
-  padding: 7px;
-  border-radius: 10px;
-  align-self: center;
-  margin-bottom: 78px;
-  margin-top: 10px;
-}
-.landing-page h4 {
-  font-size: 10pt;
-  color: #ffffff;
-  width: 10%;
-  padding: 7px;
-  align-self: center;
-}
-
 .App {
   text-align: center;
   background-color: #333333;
@@ -363,6 +324,498 @@ table {
 .login-form-wrapper form .submit-button:hover {
   transition: 0.3s;
   color: #020201;
+}
+
+.landing-page {
+  margin: 0 auto;
+  height: auto;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.landing-page h1 {
+  font-size: 15rem;
+  color: #ffffff;
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+.landing-page h2 {
+  font-size: 3rem;
+  color: #7851a9;
+  margin-bottom: 1.2rem;
+  margin-top: -75px;
+}
+.landing-page a {
+  font-size: 10pt;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1px solid white;
+  width: 4%;
+  padding: 7px;
+  border-radius: 10px;
+  align-self: center;
+  margin-bottom: 78px;
+  margin-top: 10px;
+}
+.landing-page h4 {
+  font-size: 10pt;
+  color: #ffffff;
+  width: 10%;
+  padding: 7px;
+  align-self: center;
+}
+
+.company-main-ui-container {
+  margin: 0 auto;
+}
+.company-main-ui-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+.company-main-ui-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.company-main-ui-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.company-main-ui-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.company-main-ui-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.company-main-ui-container .company-main-ui {
+  color: #fff;
+}
+.company-main-ui-container .company-main-ui h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+}
+.company-main-ui-container .company-main-ui .jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card {
+  background-color: #666;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 30px 50px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd893;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card h2 {
+  font-size: 2.5rem;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card p {
+  font-size: 2rem;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card div:nth-child(4) {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.company-main-ui-container .company-main-ui .jobs .job-card div:nth-child(4) button {
+  color: #f9c76c;
+  background-color: #666;
+  border: 1px solid #f9c76c;
+}
+
+.main-ui-container {
+  margin: 0 auto;
+}
+.main-ui-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+.main-ui-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.main-ui-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.main-ui-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.main-ui-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.main-ui-container .main-ui {
+  color: #fff;
+}
+.main-ui-container .main-ui h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+}
+.main-ui-container .main-ui .jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+}
+.main-ui-container .main-ui .jobs .job-card {
+  background-color: #666;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 30px 50px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.main-ui-container .main-ui .jobs .job-card h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd893;
+}
+.main-ui-container .main-ui .jobs .job-card h2 {
+  font-size: 2.5rem;
+}
+.main-ui-container .main-ui .jobs .job-card p {
+  font-size: 2rem;
+}
+.main-ui-container .main-ui .jobs .job-card div:nth-child(4) {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.main-ui-container .main-ui .jobs .job-card div:nth-child(4) button {
+  cursor: pointer;
+  color: #f9c76c;
+  background-color: #666;
+  border: 1px solid #f9c76c;
+}
+
+.company-profile-container {
+  margin: 0 auto;
+}
+.company-profile-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+.company-profile-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.company-profile-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.company-profile-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.company-profile-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.company-profile-container .company-profile {
+  margin: 50px auto;
+  background-color: #666;
+  width: 500px;
+  border-radius: 20px;
+}
+.company-profile-container .company-profile h1 {
+  margin-top: 30px;
+  font-size: 3.5rem;
+  color: #fff;
+}
+.company-profile-container .company-profile .company-profile-info {
+  padding: 30px;
+}
+.company-profile-container .company-profile .company-profile-info h2 {
+  color: #ffd893;
+  font-size: 2rem;
+}
+.company-profile-container .hidden {
+  display: none;
+}
+.company-profile-container .update-btn {
+  outline: none;
+  transition: 0.3s;
+  font-size: 2rem;
+  color: #fff;
+  width: 150px;
+  margin: 20px auto;
+  background-color: #daa443;
+  border: 2px solid #49157d;
+  border-radius: 20px;
+  padding: 5px 5px;
+}
+.company-profile-container .update-btn:hover {
+  transition: 0.3s;
+  background-color: #f9c76c;
+  cursor: pointer;
+}
+.company-profile-container .input {
+  display: flex;
+  transition: 0.3s;
+  outline: none;
+  background-color: #666666;
+  color: #eee;
+  width: 300px;
+  margin: 10px auto;
+  font-size: 2rem;
+  border-radius: 20px;
+  padding: 10px 15px;
+  border: 2px solid #49157d;
+}
+.company-profile-container input::placeholder {
+  color: #999999;
+}
+.company-profile-container .button {
+  outline: none;
+  transition: 0.3s;
+  font-size: 2rem;
+  color: #fff;
+  width: 150px;
+  margin: 20px auto;
+  background-color: #daa443;
+  border: 2px solid #49157d;
+  border-radius: 20px;
+  padding: 5px 5px;
+}
+
+seeker-profile-container {
+  margin: 0 auto;
+}
+seeker-profile-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+seeker-profile-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+seeker-profile-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+seeker-profile-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+seeker-profile-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+seeker-profile-container .seeker-profile {
+  margin: 50px auto;
+  background-color: #666;
+  width: 500px;
+  border-radius: 20px;
+}
+seeker-profile-container .seeker-profile h1 {
+  margin-top: 30px;
+  font-size: 3.5rem;
+  color: #fff;
+}
+seeker-profile-container .seeker-profile .seeker-profile-info {
+  padding: 30px;
+}
+seeker-profile-container .seeker-profile .seeker-profile-info h2 {
+  color: #ffd893;
+  font-size: 2rem;
+}
+seeker-profile-container .hidden {
+  display: none;
+}
+seeker-profile-container .button {
+  outline: none;
+  transition: 0.3s;
+  font-size: 2rem;
+  color: #fff;
+  width: 150px;
+  margin: 20px auto;
+  background-color: #daa443;
+  border: 2px solid #49157d;
+  border-radius: 20px;
+  padding: 5px 5px;
+}
+seeker-profile-container .button:hover {
+  transition: 0.3s;
+  background-color: #f9c76c;
+  cursor: pointer;
+}
+
+.company-matches-page-container {
+  margin: 0 auto;
+  background-color: #333;
+}
+.company-matches-page-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+.company-matches-page-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.company-matches-page-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.company-matches-page-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.company-matches-page-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.company-matches-page-container .company-matches-page {
+  color: #fff;
+}
+.company-matches-page-container .company-matches-page h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+}
+.company-matches-page-container .company-matches-page .seekers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card {
+  background-color: #666;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 30px 50px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd893;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card h2 {
+  font-size: 2.5rem;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card p {
+  font-size: 2rem;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card div:nth-child(4) {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.company-matches-page-container .company-matches-page .seekers .seeker-card div:nth-child(4) button {
+  color: #f9c76c;
+  background-color: #666;
+  border: 1px solid #f9c76c;
+}
+
+.main-ui-container {
+  margin: 0 auto;
+}
+.main-ui-container nav {
+  background-color: #7851a9;
+  display: flex;
+}
+.main-ui-container nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+.main-ui-container nav div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.main-ui-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.main-ui-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.main-ui-container .main-ui {
+  color: #fff;
+}
+.main-ui-container .main-ui h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+}
+.main-ui-container .main-ui .jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+}
+.main-ui-container .main-ui .jobs .job-card {
+  background-color: #666;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 30px 50px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.main-ui-container .main-ui .jobs .job-card h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd893;
+}
+.main-ui-container .main-ui .jobs .job-card h2 {
+  font-size: 2.5rem;
+}
+.main-ui-container .main-ui .jobs .job-card p {
+  font-size: 2rem;
+}
+.main-ui-container .main-ui .jobs .job-card div:nth-child(4) {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.main-ui-container .main-ui .jobs .job-card div:nth-child(4) button {
+  cursor: pointer;
+  color: #f9c76c;
+  background-color: #666;
+  border: 1px solid #f9c76c;
 }
 
 /*# sourceMappingURL=styles.css.map */

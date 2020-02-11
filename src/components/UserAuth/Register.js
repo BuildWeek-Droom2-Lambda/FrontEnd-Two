@@ -10,6 +10,7 @@ const Register = props => {
   const history = useHistory();
 
   const [newUser, setNewUser] = useState({
+    id: null,
     name: "",
     password: "",
     type: ""

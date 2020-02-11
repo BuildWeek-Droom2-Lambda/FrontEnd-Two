@@ -18,6 +18,8 @@ export const DELETE_JOB_SUCCESS = "DELETE_JOB_SUCCESS";
 
 export const JOBS_FAILURE = "JOBS_FAILURE";
 
+export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
+
 //  action creator for .get request. returns array of jobs.
 export const getJobs = () => dispatch => {
   dispatch({

@@ -1,0 +1,108 @@
+.company-profile-container {
+  margin: 0 auto;
+
+  nav {
+    background-color: #7851a9;
+    display: flex;
+
+    h3 {
+      color: #fff;
+      font-size: 2rem;
+      margin-left: 10px;
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      a {
+        transition: 0.3s;
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 2rem;
+
+        &:hover {
+          transition: 0.3s;
+          color: #ffd893;
+        }
+      }
+    }
+  }
+
+  .company-profile {
+    margin: 50px auto;
+    background-color: #666;
+    width: 500px;
+    border-radius: 20px;
+
+    h1 {
+      margin-top: 30px;
+      font-size: 3.5rem;
+      color: #fff;
+    }
+
+    .company-profile-info {
+      padding: 30px;
+
+      h2 {
+        color: #ffd893;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .update-btn {
+    outline: none;
+    transition: 0.3s;
+    font-size: 2rem;
+    color: #fff;
+    width: 150px;
+    margin: 20px auto;
+    background-color: #daa443;
+    border: 2px solid #49157d;
+    border-radius: 20px;
+    padding: 5px 5px;
+
+    &:hover {
+      transition: 0.3s;
+      background-color: #f9c76c;
+      cursor: pointer;
+    }
+  }
+  .input {
+    display: flex;
+    transition: 0.3s;
+    outline: none;
+    background-color: #666666;
+    color: #eee;
+    width: 300px;
+    margin: 10px auto;
+    font-size: 2rem;
+    border-radius: 20px;
+    padding: 10px 15px;
+    border: 2px solid #49157d;
+  }
+
+  input::placeholder {
+    color: #999999;
+  }
+
+  .button {
+    outline: none;
+    transition: 0.3s;
+    font-size: 2rem;
+    color: #fff;
+    width: 150px;
+    margin: 20px auto;
+    background-color: #daa443;
+    border: 2px solid #49157d;
+    border-radius: 20px;
+    padding: 5px 5px;
+  }
+}
