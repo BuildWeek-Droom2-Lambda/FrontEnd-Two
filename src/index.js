@@ -25,8 +25,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, actionsLogger))
 );
 
-export default store;
-
 reactDOM.render(
   <Provider store={store}>
     <Router>

@@ -9,39 +9,35 @@ import { useHistory } from "react-router-dom";
 const Login = props => {
   let history = useHistory();
 
-  const [user, setUser] = useState({
-    username: "",
+  const [newUser, setNewUser] = useState({
+    name: "",
     password: "",
     type: ""
   });
 
   const handleChange = e => {
-    e.preventDefault();
-    setUser({
-      ...user,
+    setNewUser({
+      ...newUser,
       [e.target.name]: e.target.value
     });
+    console.log(newUser);
   };
 
-  const handleSubmit = (e, user) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    props.userLogin(user);
-    setInterval(() => {
-      if (user) {
-        history.push("/droom-list");
-      }
-    }, 1500);
-    history.push("/droom-list");
+    console.log(newUser);
+    props.userLogin(newUser);
+    history.push(`/${newUser.type}UI`);
   };
 
   return (
-    <div className="auth-form-wrapper">
+    <div className="login-form-wrapper">
       <form onSubmit={handleSubmit} className="auth-form">
         <label htmlFor="username">Enter Username</label>
         <input
-          name="username"
+          name="name"
           type="text"
-          value={user.name}
+          value={newUser.name}
           placeholder="username"
           onChange={handleChange}
         ></input>
@@ -50,15 +46,15 @@ const Login = props => {
         <input
           name="password"
           type="text"
-          value={user.password}
+          value={newUser.password}
           placeholder="password"
           onChange={handleChange}
         ></input>
 
-        <label htmlFor="type">Select Type</label>
+        <label htmlFor="type">Select User Type</label>
         <select
           name="type"
-          value={user.type}
+          value={newUser.type}
           className="select-dropdown"
           onChange={handleChange}
         >

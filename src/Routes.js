@@ -2,8 +2,10 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
+import Login from "./components/UserAuth/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
-import DroomList from "./components/DroomList/DroomList";
+import SeekerMain from "./components/Main_UI/SeekerMain";
+import CompanyMain from "./components/Main_UI/CompanyMain";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import NoMatch from "./components/Utility/NoMatch";
 
@@ -25,7 +27,8 @@ const Routes = () => {
           <Register />
         </Route>
 
-        <ProtectedRoute exact path="/droom-list" component={DroomList} />
+        <ProtectedRoute exact path="/seekerUI" component={<SeekerMain />} />
+        <ProtectedRoute exact path="/companyUI" component={<CompanyMain />} />
 
         <Route component={NoMatch} />
       </Switch>

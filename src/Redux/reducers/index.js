@@ -47,43 +47,13 @@ import {
 } from "../actions/saved";
 
 export const initialState = {
-  user: [
-    {
-      name: "",
-      password: "",
-      type: ""
-    }
-  ],
+  user: null,
 
-  companies: [
-    {
-      id: null,
-      name: "",
-      location: "",
-      bio: ""
-    }
-  ],
+  companies: [],
 
-  seekers: [
-    {
-      id: null,
-      name: "",
-      location: "",
-      skills: "",
-      experience: ""
-    }
-  ],
+  seekers: [],
 
-  jobs: [
-    {
-      id: null,
-      name: "",
-      location: "",
-      description: "",
-      salary: null,
-      company_id: null
-    }
-  ],
+  jobs: [],
 
   isLoading: false,
 
@@ -104,11 +74,10 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case USER_REGISTER_SUCCESS:
-      console.log(action.payload);
       return {
         message: "USER DATA RETRIEVED",
         isLoading: false,
-        user: action.payload
+        user: action.payload.user
       };
 
     case USER_LOGIN_START:
@@ -122,7 +91,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         message: "USER LOGGED IN",
         isLoading: false,
-        user: action.payload
+        user: action.payload.user
       };
 
     case USER_FAILURE:
@@ -188,10 +157,9 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case GET_JOBS_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
-        message: "JOB DATA RETRIEVED",
+        message: action.payload,
         isLoading: false,
         jobs: action.payload
       };

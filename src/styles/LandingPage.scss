@@ -1,19 +1,42 @@
 .landing-page {
   margin: 0 auto;
-  width: 100vw;
+  // width: 100vw;
   height: auto;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
   h1 {
     font-size: 15rem;
     color: #ffffff;
     font-style: italic;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
   }
 
   h2 {
     font-size: 3rem;
     color: #7851a9;
+    margin-bottom: 1.2rem;
     margin-top: -75px;
-    margin-bottom: 2rem;
+  }
+
+  a {
+    font-size: 10pt;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid white;
+    width: 4%;
+    padding: 7px;
+    border-radius: 10px;
+    align-self: center;
+    margin-bottom: 78px;
+    margin-top: 10px;
+  }
+
+  h4 {
+    font-size: 10pt;
+    color: #ffffff;
+    width: 10%;
+    padding: 7px;
+    align-self: center;
   }
 }

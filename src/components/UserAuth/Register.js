@@ -4,41 +4,42 @@ import { userRegister } from "../../Redux/actions/auth";
 
 import { connect } from "react-redux";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Register = props => {
-  const userTest = localStorage.getItem("username");
+  const history = useHistory();
 
-  let history = useHistory();
-
-  const [message, setMessage] = useState();
-
-  const [user, setUser] = useState({
-    username: "",
+  const [newUser, setNewUser] = useState({
+    name: "",
     password: "",
-    type: null
+    type: ""
   });
 
   const handleChange = e => {
-    e.preventDefault();
-
-    setUser({
-      ...user,
+    setNewUser({
+      ...newUser,
       [e.target.name]: e.target.value
     });
+    console.log(newUser);
   };
 
-  const handleSubmit = (e, user) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (userTest === user.username) {
-      setMessage("username already taken");
-      setUser(null);
-    } else {
-      props.userRegister(user);
-      localStorage.setItem("userID", user.id);
-      history.push("/droom-list");
-    }
+    props.userRegister(newUser);
+    console.log("User register @ Register.js: ", newUser);
+    history.push("/");
   };
+
+  // const checkPrevState = (newUser, prevUser) => {
+  //   setPrevUser(props.user);
+  //   if (prevUser.username === newUser.username) {
+  //     setMessage("User already exists in database");
+  //   } else if (prevUser.password === newUser.password) {
+  //     setMessage("Password already exists in database");
+  //   } else return handleSubmit(newUser);
+  // = () => {
+  //   checkPrevState();
+  // };
 
   return (
     <div className="auth-form-wrapper">
@@ -47,10 +48,10 @@ const Register = props => {
       <form onSubmit={handleSubmit} className="auth-form">
         <label htmlFor="username">Enter Username</label>
         <input
-          name="username"
+          name="name"
           type="text"
-          value={user.name}
-          placeholder={message}
+          value={newUser.name}
+          placeholder="username"
           onChange={handleChange}
         ></input>
 
@@ -58,7 +59,7 @@ const Register = props => {
         <input
           name="password"
           type="text"
-          value={user.password}
+          value={newUser.password}
           placeholder="password"
           onChange={handleChange}
         ></input>
@@ -66,7 +67,7 @@ const Register = props => {
         <label htmlFor="type">Select User Type</label>
         <select
           name="type"
-          value={user.type}
+          value={newUser.type}
           className="select-dropdown"
           onChange={handleChange}
         >
@@ -78,9 +79,16 @@ const Register = props => {
         <button onClick={handleSubmit} className="submit-button">
           Sign Up
         </button>
+        <Link to="/">Back to login</Link>
       </form>
     </div>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     user: state.user
+//   };
+// };
 
 export default connect(null, { userRegister })(Register);

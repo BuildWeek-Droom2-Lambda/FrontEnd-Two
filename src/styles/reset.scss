@@ -83,12 +83,13 @@ video,
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: inherit;
   vertical-align: baseline;
+  height: auto;
+  width: auto;
 }
 
 #root {
-  height: auto;
 }
 article,
 aside,

@@ -4,8 +4,8 @@ import { getJobs } from "../../Redux/actions/jobs";
 
 import { Link } from "react-router-dom";
 
-const DroomList = props => {
-  const [jobs, setJobs] = useState(props.jobs);
+const SeekerMain = props => {
+  const [jobs, setJobs] = useState([]);
   const [savedJob, setSavedJob] = useState({
     id: null,
     name: "",
@@ -15,11 +15,12 @@ const DroomList = props => {
   });
   console.log("Saved Jobs ", savedJob);
 
-  console.log("Jobs ", jobs);
+  console.log("Message from reducer: ", props.message);
 
+  const newJobs = props.getJobs();
   useEffect(() => {
-    const newJobs = props.getJobs();
     setJobs(newJobs);
+    console.log(jobs);
   }, []);
 
   const ClickHandler = e => {
@@ -84,8 +85,9 @@ const DroomList = props => {
 
 const mapStateToProps = state => {
   return {
-    jobs: state.jobs
+    jobs: state.jobs,
+    message: state.message
   };
 };
 
-export default connect(mapStateToProps, { getJobs })(DroomList);
+export default connect(mapStateToProps, { getJobs })(SeekerMain);

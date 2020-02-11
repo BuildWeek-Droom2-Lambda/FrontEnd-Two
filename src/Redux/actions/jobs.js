@@ -1,9 +1,8 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import axios from "axios";
 
 //  action type variables for interacting with the API /jobs endpoint.
 export const GET_JOBS_START = "GET_JOBS_START";
-export const GET_JOBS_SUCCESS = "GET_JOBS_START";
+export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
 
 export const GET_JOB_BY_ID_START = "GET_JOB_BY_ID_START";
 export const GET_JOB_BY_ID_SUCCESS = "GET_JOB_BY_ID_SUCCESS";
@@ -30,8 +29,7 @@ export const getJobs = () => dispatch => {
       console.log("Result of API request for jobs array: ", res);
       dispatch({
         type: GET_JOBS_SUCCESS,
-        payload: res.data,
-        message: `SUCCESS! ${res.data.user} was returned`
+        payload: res.data
       });
     })
     .catch(err => {
