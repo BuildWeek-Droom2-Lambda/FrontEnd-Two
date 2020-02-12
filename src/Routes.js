@@ -1,8 +1,11 @@
 import React from "react";
 
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
-import Login from "./components/UserAuth/Login";
+import { getJobs } from "./Redux/actions/jobs";
+import { getSeekers } from "./Redux/actions/seekers";
+
 import LandingPage from "./components/LandingPage/LandingPage";
 import SeekerMain from "./components/Main_UI/SeekerMain";
 import CompanyMain from "./components/Main_UI/CompanyMain";
@@ -15,10 +18,24 @@ import "./styles/styles.css";
 
 // This component is handling all of the Navigation and routing for the application. It's sole purpose is to set the URL paths and render components based upon URL input.
 
-const Routes = () => {
+const Routes = props => {
   return (
     <div className="App">
       <Switch>
+        <ProtectedRoute exact path="/seekerUI">
+          <SeekerMain
+            jobs={props.jobs}
+            isLoading={props.isLoading}
+            getJobs={props.getJobs}
+          />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/companyUI">
+          <CompanyMain
+            seekers={props.seekers}
+            isLoading={props.isLoading}
+            getSeekers={props.getSeeekers}
+          />
+        </ProtectedRoute>
         <Route exact path="/">
           <LandingPage />
         </Route>
@@ -27,13 +44,17 @@ const Routes = () => {
           <Register />
         </Route>
 
-        <ProtectedRoute exact path="/seekerUI" component={<SeekerMain />} />
-        <ProtectedRoute exact path="/companyUI" component={<CompanyMain />} />
-
         <Route component={NoMatch} />
       </Switch>
     </div>
   );
 };
 
-export default Routes;
+const mapStateToProps = state => {
+  return {
+    jobs: state.jobs,
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps, { getJobs, getSeekers })(Routes);

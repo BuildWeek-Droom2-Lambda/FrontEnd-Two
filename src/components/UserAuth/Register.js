@@ -10,6 +10,7 @@ const Register = props => {
   const history = useHistory();
 
   const [newUser, setNewUser] = useState({
+    id: null,
     name: "",
     password: "",
     type: ""
@@ -27,7 +28,7 @@ const Register = props => {
     e.preventDefault();
     props.userRegister(newUser);
     console.log("User register @ Register.js: ", newUser);
-    history.push("/");
+    history.push(`/`);
   };
 
   // const checkPrevState = (newUser, prevUser) => {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { userLogin } from "../../Redux/actions/auth";
 
+import Spinner from "../Utility/Spinner";
+
 import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
@@ -10,6 +12,7 @@ const Login = props => {
   let history = useHistory();
 
   const [newUser, setNewUser] = useState({
+    id: null,
     name: "",
     password: "",
     type: ""
@@ -32,42 +35,52 @@ const Login = props => {
 
   return (
     <div className="login-form-wrapper">
-      <form onSubmit={handleSubmit} className="auth-form">
-        <label htmlFor="username">Enter Username</label>
-        <input
-          name="name"
-          type="text"
-          value={newUser.name}
-          placeholder="username"
-          onChange={handleChange}
-        ></input>
+      {!props.isLoading ? (
+        <form onSubmit={handleSubmit} className="auth-form">
+          <label htmlFor="username">Enter Username</label>
+          <input
+            name="name"
+            type="text"
+            value={newUser.name}
+            placeholder="username"
+            onChange={handleChange}
+          ></input>
 
-        <label htmlFor="password">Enter Password</label>
-        <input
-          name="password"
-          type="text"
-          value={newUser.password}
-          placeholder="password"
-          onChange={handleChange}
-        ></input>
+          <label htmlFor="password">Enter Password</label>
+          <input
+            name="password"
+            type="text"
+            value={newUser.password}
+            placeholder="password"
+            onChange={handleChange}
+          ></input>
 
-        <label htmlFor="type">Select User Type</label>
-        <select
-          name="type"
-          value={newUser.type}
-          className="select-dropdown"
-          onChange={handleChange}
-        >
-          <option id="placeholder">Login As...</option>
-          <option>seeker</option>
-          <option>company</option>
-        </select>
-        <button onClick={handleSubmit} className="submit-button">
-          Log In
-        </button>
-      </form>
+          <label htmlFor="type">Select User Type</label>
+          <select
+            name="type"
+            value={newUser.type}
+            className="select-dropdown"
+            onChange={handleChange}
+          >
+            <option id="placeholder">Login As...</option>
+            <option>seeker</option>
+            <option>company</option>
+          </select>
+          <button onClick={handleSubmit} className="submit-button">
+            Log In
+          </button>
+        </form>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };
 
-export default connect(null, { userLogin })(Login);
+const mapStateToProps = state => {
+  return {
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps, { userLogin })(Login);

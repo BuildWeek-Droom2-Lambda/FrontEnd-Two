@@ -1,8 +1,9 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axios from "axios";
 
 //  action type variables for companies API endpoint interaction
 export const GET_COMPANIES_START = "GET_COMPANIES_START";
-export const GET_COMPANIES_SUCCESS = "GET_COMPANIES_START";
+export const GET_COMPANIES_SUCCESS = "GET_COMPANIES_SUCCESS";
 
 export const GET_COMPANY_BY_ID_START = "GET_JOBS_BY_ID_START";
 export const GET_COMPANY_BY_ID_SUCCESS = "GET_JOBS_BY_ID_SUCCESS";
@@ -15,13 +16,15 @@ export const DELETE_COMPANY_SUCCESS = "DELETE_COMPANY_SUCCESS";
 
 export const COMPANIES_FAILURE = "COMPANIES_FAILURE";
 
+export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
+
 // action creator for .get request. Returns an array of companies
-export const getCompany = () => dispatch => {
+export const getCompanies = () => dispatch => {
   dispatch({
     type: GET_COMPANIES_START
   });
-  axiosWithAuth()
-    .get("/companies")
+  axios
+    .get(`${BASE_URL}/companies`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -63,12 +66,12 @@ export const getCompanyById = id => dispatch => {
 };
 
 //  action creator for .put request to update a company. returns id and name of updated company
-export const updateCompany = (id, editCompany) => dispatch => {
+export const updateCompany = (id, values) => dispatch => {
   dispatch({
     type: UPDATE_COMPANY_START
   });
   axiosWithAuth()
-    .put(`/companies/smurfs/${id}`, editCompany)
+    .put(`/companies/smurfs/${id}`, values)
     .then(res => {
       console.log("This is the result of a put request to the API: ", res.data);
       dispatch({

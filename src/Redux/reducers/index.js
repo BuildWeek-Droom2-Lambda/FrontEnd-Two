@@ -29,6 +29,16 @@ import {
 } from "../actions/jobs";
 
 import {
+  GET_SEEKERS_START,
+  GET_SEEKERS_SUCCESS,
+  UPDATE_SEEKER_START,
+  UPDATE_SEEKER_SUCCESS,
+  DELETE_SEEKER_START,
+  DELETE_SEEKER_SUCCESS,
+  SEEKER_FAILURE
+} from "../actions/seekers";
+
+import {
   GET_SAVED_COMPANIES_START,
   GET_SAVED_SEEKERS_START,
   GET_SAVED_COMPANIES_SUCCESS,
@@ -47,13 +57,17 @@ import {
 } from "../actions/saved";
 
 export const initialState = {
-  user: null,
+  user: {},
 
   companies: [],
 
   seekers: [],
 
   jobs: [],
+
+  seekerMatches: [],
+
+  companyMatches: [],
 
   isLoading: false,
 
@@ -74,14 +88,17 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case USER_REGISTER_SUCCESS:
+      localStorage.setItem("ID", action.payload.id);
       return {
-        message: "USER DATA RETRIEVED",
+        ...state,
+        message: `USER SAVED, WELCOME SEEKER ${action.payload.name}`,
         isLoading: false,
-        user: action.payload.user
+        user: action.payload
       };
 
     case USER_LOGIN_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -89,9 +106,9 @@ export const rootReducer = (state = initialState, action) => {
     case USER_LOGIN_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER LOGGED IN",
-        isLoading: false,
-        user: action.payload.user
+        isLoading: false
       };
 
     case USER_FAILURE:
@@ -111,6 +128,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_COMPANIES_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         companies: action.payload,
         isLoading: false
@@ -118,6 +136,7 @@ export const rootReducer = (state = initialState, action) => {
 
     case UPDATE_COMPANY_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -125,12 +144,14 @@ export const rootReducer = (state = initialState, action) => {
     case UPDATE_COMPANY_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER LOGGED IN",
         isLoading: false
       };
 
     case DELETE_COMPANY_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -138,7 +159,8 @@ export const rootReducer = (state = initialState, action) => {
     case DELETE_COMPANY_SUCCESS:
       console.log(action.payload);
       return {
-        message: "USER LOGGED IN",
+        ...state.filter(company => company.id !== action.payload.id),
+        message: "COMPANY DELETED",
         isLoading: false
       };
 
@@ -159,13 +181,13 @@ export const rootReducer = (state = initialState, action) => {
     case GET_JOBS_SUCCESS:
       return {
         ...state,
-        message: action.payload,
         isLoading: false,
         jobs: action.payload
       };
 
     case ADD_JOB_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -173,12 +195,14 @@ export const rootReducer = (state = initialState, action) => {
     case ADD_JOB_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER LOGGED IN",
         isLoading: false
       };
 
     case UPDATE_JOB_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -186,12 +210,14 @@ export const rootReducer = (state = initialState, action) => {
     case UPDATE_JOB_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER LOGGED IN",
         isLoading: false
       };
 
     case DELETE_JOB_START:
       return {
+        ...state,
         message: "BEGINNING API CALL... ",
         isLoading: true
       };
@@ -199,11 +225,63 @@ export const rootReducer = (state = initialState, action) => {
     case DELETE_JOB_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER LOGGED IN",
         isLoading: false
       };
 
     case JOBS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        message: `Error: ${action.payload.err}`
+      };
+
+    case GET_SEEKERS_START:
+      return {
+        ...state,
+        message: "BEGINNING API CALL... ",
+        isLoading: true
+      };
+
+    case GET_SEEKERS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        seekers: action.payload
+      };
+
+    case UPDATE_SEEKER_START:
+      return {
+        ...state,
+        message: "BEGINNING API CALL... ",
+        isLoading: true
+      };
+
+    case UPDATE_SEEKER_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        message: "USER LOGGED IN",
+        isLoading: false
+      };
+
+    case DELETE_SEEKER_START:
+      return {
+        ...state,
+        message: "BEGINNING API CALL... ",
+        isLoading: true
+      };
+
+    case DELETE_SEEKER_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        message: "USER LOGGED IN",
+        isLoading: false
+      };
+
+    case SEEKER_FAILURE:
       return {
         ...state,
         isLoading: false,
@@ -220,6 +298,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SAVED_COMPANIES_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -234,6 +313,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SAVED_SEEKERS_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -248,6 +328,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SAVED_COMPANY_BY_ID_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -262,6 +343,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SAVED_SEEKER_BY_ID_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -276,6 +358,7 @@ export const rootReducer = (state = initialState, action) => {
     case ADD_SAVED_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -290,6 +373,7 @@ export const rootReducer = (state = initialState, action) => {
     case DELETE_SAVED_COMPANY_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -304,6 +388,7 @@ export const rootReducer = (state = initialState, action) => {
     case DELETE_SAVED_SEEKER_SUCCESS:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
@@ -311,6 +396,7 @@ export const rootReducer = (state = initialState, action) => {
     case SAVED_FAILURE:
       console.log(action.payload);
       return {
+        ...state,
         message: "USER DATA RETRIEVED",
         isLoading: false
       };
