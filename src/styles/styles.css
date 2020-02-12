@@ -403,7 +403,7 @@ table {
   width: 30%;
   display: flex;
   justify-content: space-between;
-  margin-left: 30rem;
+  margin-left: 60rem;
 }
 .main-ui-container nav div a {
   transition: 0.3s;
@@ -420,8 +420,8 @@ table {
   color: #fff;
 }
 .main-ui-container .main-ui h1 {
-  font-size: 4rem;
-  margin-top: 50px;
+  font-size: 6rem;
+  margin-top: 30px;
 }
 .main-ui-container .main-ui .jobs {
   display: flex;
@@ -435,7 +435,7 @@ table {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 30px 50px;
+  margin: 10px 50px;
   border-radius: 20px;
   padding: 0 50px 50px 50px;
 }
@@ -465,20 +465,25 @@ table {
 
 .company-profile-container {
   margin: 0 auto;
+  height: 100vh;
 }
 .company-profile-container nav {
   background-color: #7851a9;
   display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 5rem;
 }
 .company-profile-container nav h3 {
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 10px;
 }
 .company-profile-container nav div {
-  width: 100%;
+  width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 60rem;
 }
 .company-profile-container nav div a {
   transition: 0.3s;
@@ -572,14 +577,13 @@ table {
 .seeker-profile-container nav h3 {
   color: #fff;
   font-size: 3rem;
-  font-weight: 70%;
   margin-left: 10px;
 }
 .seeker-profile-container nav div {
   width: 30%;
   display: flex;
   justify-content: space-between;
-  margin-left: 30rem;
+  margin-left: 60rem;
 }
 .seeker-profile-container nav div a {
   transition: 0.3s;
@@ -652,7 +656,7 @@ table {
   width: 30%;
   display: flex;
   justify-content: space-between;
-  margin-left: 30rem;
+  margin-left: 60rem;
 }
 .matches-page-container nav div a {
   transition: 0.3s;
