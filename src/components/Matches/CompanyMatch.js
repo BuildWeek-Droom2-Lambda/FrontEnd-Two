@@ -6,7 +6,7 @@ import Spinner from "../Utility/Spinner";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const CompanyMatchesPage = props => {
+const CompanyMatch = props => {
   const [savedSeekers, setSavedSeekers] = useState([]);
   console.log(savedSeekers);
 
@@ -51,7 +51,7 @@ const CompanyMatchesPage = props => {
   };
 
   return (
-    <div className="company-matches-page-container">
+    <div className="matches-page-container">
       {!props.isLoading ? (
         <>
           <nav>
@@ -99,4 +99,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(CompanyMatchesPage);
+export default connect(mapStateToProps, null)(CompanyMatch);

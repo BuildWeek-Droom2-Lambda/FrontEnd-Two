@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { getCompanyById, updateCompany } from "../../Redux/actions/companies";
 
-const CompanyProfilePage = ({ values, touched, errors, status, ...props }) => {
+const CompanyProfile = ({ values, touched, errors, status, ...props }) => {
   const [company, setCompany] = useState({
     name: "",
     pasword: "",
@@ -95,7 +95,7 @@ const CompanyProfilePage = ({ values, touched, errors, status, ...props }) => {
   );
 };
 
-const FormikCompanyProfilePage = withFormik({
+const FormikCompanyProfile = withFormik({
   mapPropsToValues() {
     return {
       name: "",
@@ -118,8 +118,8 @@ const FormikCompanyProfilePage = withFormik({
   },
 
   displayName: "CompanyProfilePage"
-})(CompanyProfilePage);
+})(CompanyProfile);
 
 export default connect(null, { getCompanyById, updateCompany })(
-  FormikCompanyProfilePage
+  FormikCompanyProfile
 );
