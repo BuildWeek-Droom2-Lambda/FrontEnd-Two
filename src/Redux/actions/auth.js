@@ -12,6 +12,8 @@ export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 
 export const USER_FAILURE = "USER_FAILURE";
 
+export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
+
 // action creator for registering a user. Returns new user object - need to implement some type of logic for diff by user_type
 
 export const userRegister = newUser => dispatch => {
@@ -20,7 +22,7 @@ export const userRegister = newUser => dispatch => {
     payload: newUser
   });
   axios
-    .post("https://droom-node-server.herokuapp.com/api/register", newUser)
+    .post(`${BASE_URL}/register`, newUser)
     .then(res => {
       localStorage.setItem("userid", res.data.id);
       dispatch({
@@ -44,7 +46,7 @@ export const userLogin = newUser => dispatch => {
     type: USER_LOGIN_START
   });
   axios
-    .post("https://droom-node-server.herokuapp.com/api/login", newUser)
+    .post(`${BASE_URL}/login`, newUser)
     .then(res => {
       localStorage.setItem("token", res.data.token);
       dispatch({

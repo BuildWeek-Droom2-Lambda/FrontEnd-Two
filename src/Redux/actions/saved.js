@@ -2,7 +2,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 //  action type variables for saved matches API endpoint interaction
 export const GET_SAVED_COMPANIES_START = "GET_SAVED_START";
-export const GET_SAVED_COMPANIES_SUCCESS = "GET_SAVED_START";
+export const GET_SAVED_COMPANIES_SUCCESS = "GET_SAVED_SUCCESS";
 
 export const GET_SAVED_COMPANY_BY_ID_START = "GET_SAVED_BY_ID_START";
 export const GET_SAVED_COMPANY_BY_ID_SUCCESS = "GET_SAVED_BY_ID_SUCCESS";
@@ -23,6 +23,8 @@ export const DELETE_SAVED_SEEKER_START = "DELETE_SAVED_START";
 export const DELETE_SAVED_SEEKER_SUCCESS = "DELETE_SAVED_SUCCESS";
 
 export const SAVED_FAILURE = "SAVED_FAILURE";
+
+export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
 
 //  action creator for .get request to get the array of companies that have matched with a seeker
 export const getSavedCompanies = id => dispatch => {

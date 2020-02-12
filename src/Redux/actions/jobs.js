@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axios from "axios";
 
 //  action type variables for interacting with the API /jobs endpoint.
 export const GET_JOBS_START = "GET_JOBS_START";
@@ -25,8 +26,8 @@ export const getJobs = () => dispatch => {
   dispatch({
     type: GET_JOBS_START
   });
-  axiosWithAuth()
-    .get("/jobs")
+  axios
+    .get(`${BASE_URL}/jobs`)
     .then(res => {
       console.log("Result of API request for jobs array: ", res);
       dispatch({

@@ -28,7 +28,7 @@ const Register = props => {
     e.preventDefault();
     props.userRegister(newUser);
     console.log("User register @ Register.js: ", newUser);
-    history.push("/");
+    history.push(`/`);
   };
 
   // const checkPrevState = (newUser, prevUser) => {

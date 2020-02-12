@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Spinner from "../Utility/Spinner";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const CompanyMainUI = () => {
+const CompanyMainUI = props => {
   const [seekers, setSeekers] = useState([]);
   const [savedSeeker, setSavedSeeker] = useState({
     seeker_id: null,
@@ -66,38 +68,51 @@ const CompanyMainUI = () => {
 
   return (
     <div className="company-main-ui-container">
-      <nav>
-        <h3>Droom</h3>
-        <div>
-          <Link to="/companyprofilepage">Profile</Link>
-          <Link to="/companymatchespage">Matches</Link>
-          <Link to="/companymainui">Home</Link>
-        </div>
-      </nav>
+      {!props.isLoading ? (
+        <>
+          <nav>
+            <h3>Droom</h3>
+            <div>
+              <Link to="/companyprofilepage">Profile</Link>
+              <Link to="/companymatchespage">Matches</Link>
+              <Link to="/companymainui">Home</Link>
+            </div>
+          </nav>
 
-      <div className="company-main-ui">
-        <h1>Find Employees</h1>
-        <div className="jobs">
-          {seekers.map(seekers => {
-            return (
-              <div key={seekers.id} className="job-card">
-                <h1>{seekers.name}</h1>
-                <h2>{seekers.location}</h2>
-                <div>
-                  <button value={seekers.id} onClick={e => handleDelete(e)}>
-                    X
-                  </button>
-                  <button value={seekers.id} onClick={e => ClickHandler(e)}>
-                    Save
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+          <div className="company-main-ui">
+            <h1>Find Employees</h1>
+            <div className="jobs">
+              {seekers.map(seekers => {
+                return (
+                  <div key={seekers.id} className="job-card">
+                    <h1>{seekers.name}</h1>
+                    <h2>{seekers.location}</h2>
+                    <div>
+                      <button value={seekers.id} onClick={e => handleDelete(e)}>
+                        X
+                      </button>
+                      <button value={seekers.id} onClick={e => ClickHandler(e)}>
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };
 
-export default CompanyMainUI;
+const mapStateToProps = state => {
+  return {
+    companies: state.companies,
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps, null)(CompanyMainUI);

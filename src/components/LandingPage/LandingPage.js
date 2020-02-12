@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "../UserAuth/Login";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getJobs } from "../../Redux/actions/jobs";
+import { getSeekers } from "../../Redux/actions/seekers";
+import { getCompanies } from "../../Redux/actions/companies";
 
-const LandingPage = () => {
+const LandingPage = ({ jobs, seekers, getJobs, getSeekers, getCompanies }) => {
+  useEffect(() => {
+    getJobs();
+  }, []);
+
+  useEffect(() => {
+    getSeekers();
+  }, [jobs]);
+
+  useEffect(() => {
+    getCompanies();
+  }, [seekers]);
   return (
     <div className="landing-page">
       <h1>Droom</h1>
@@ -16,4 +31,13 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+const mapStateToProps = state => {
+  return {
+    jobs: state.jobs,
+    seekers: state.seekers
+  };
+};
+
+export default connect(mapStateToProps, { getJobs, getSeekers, getCompanies })(
+  LandingPage
+);

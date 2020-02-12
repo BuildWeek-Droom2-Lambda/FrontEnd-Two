@@ -136,6 +136,12 @@ table {
   text-align: center;
   background-color: #333333;
 }
+.App .spinner {
+  border-radius: 400px;
+  margin-top: 2rem;
+  opacity: 0.6;
+  box-shadow: 20px 10px 20px #111111;
+}
 
 .auth-form-wrapper {
   color: #ffffff;

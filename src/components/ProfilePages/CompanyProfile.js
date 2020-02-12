@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import * as Yup from "yup";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { axiosWithAuth } from "../Utils/axiosWithAuth";
 
-const CompanyProfilePage = props => {
+import { Link } from "react-router-dom";
+
+import { withFormik } from "formik";
+import * as Yup from "yup";
+
+import { connect } from "react-redux";
+import { getCompanyById, updateCompany } from "../../Redux/actions/companies";
+
+const CompanyProfilePage = ({ values, touched, errors, status, ...props }) => {
   const [company, setCompany] = useState({
     name: "",
     pasword: "",
@@ -24,18 +27,8 @@ const CompanyProfilePage = props => {
   }, [status]);
 
   useEffect(() => {
-    const LS = localStorage.getItem("userid");
-    axios
-      .get(`https://droom-node-server.herokuapp.com/api/companies/${LS}`)
-
-      .then(res => {
-        console.log(res);
-        setCompany(res.data);
-      })
-
-      .catch(err => {
-        console.log(err);
-      });
+    const ID = localStorage.getItem("ID");
+    props.getCompanyById(ID);
   }, []);
 
   return (
@@ -66,38 +59,38 @@ const CompanyProfilePage = props => {
         Update Profile
       </button>
 
-      <Form className={`form ${updateForm ? "hidden" : ""}`}>
-        <Field
+      <form className={`form ${updateForm ? "hidden" : ""}`}>
+        <input
           className="input"
           name="name"
           type="text"
           value={values.name}
           placeholder="username"
-        ></Field>
+        ></input>
         {touched.name && errors.name && <p>{errors.name}</p>}
 
-        <Field
+        <input
           className="input"
           name="location"
           type="text"
           value={values.location}
           placeholder="location"
-        ></Field>
+        ></input>
         {touched.location && errors.location && <p>{errors.location}</p>}
 
-        <Field
+        <input
           className="input"
           name="bio"
           type="text"
           value={values.bio}
           placeholder="bio"
-        ></Field>
+        ></input>
         {touched.bio && errors.bio && <p>{errors.bio}</p>}
 
         <button className="button" type="submit">
           Update
         </button>
-      </Form>
+      </form>
     </div>
   );
 };
@@ -117,25 +110,16 @@ const FormikCompanyProfilePage = withFormik({
     bio: Yup.string().required("Bio is required")
   }),
 
-  handleSubmit(values, { resetForm, setStatus }) {
+  handleSubmit(values) {
     console.log("Company form values", values);
 
-    const LS = localStorage.getItem("userid");
-    axiosWithAuth()
-      .put(
-        `https://droom-node-server.herokuapp.com/api/companies/${LS}`,
-        values
-      )
+    const ID = localStorage.getItem("userid");
+    updateCompany(ID, values);
+  },
 
-      .then(res => {
-        console.log(res);
-        setStatus(true);
-        setStatus(res.data);
-        resetForm();
-      })
+  displayName: "CompanyProfilePage"
+})(CompanyProfilePage);
 
-      .catch(err => {
-        console.log(err);
-      });
-  }
-});
+export default connect(null, { getCompanyById, updateCompany })(
+  FormikCompanyProfilePage
+);
