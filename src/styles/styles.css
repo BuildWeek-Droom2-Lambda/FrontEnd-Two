@@ -140,7 +140,19 @@ table {
   border-radius: 400px;
   margin-top: 2rem;
   opacity: 0.6;
+  object-fit: cover;
+}
+.App .spinner-center {
   box-shadow: 20px 10px 20px #111111;
+  background-color: #000000;
+  margin: 20px auto;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  width: 95%;
+  padding: 0;
 }
 
 .auth-form-wrapper {
@@ -371,94 +383,27 @@ table {
   align-self: center;
 }
 
-.company-main-ui-container {
-  margin: 0 auto;
-}
-.company-main-ui-container nav {
-  background-color: #7851a9;
-  display: flex;
-}
-.company-main-ui-container nav h3 {
-  color: #fff;
-  font-size: 2rem;
-  margin-left: 10px;
-}
-.company-main-ui-container nav div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.company-main-ui-container nav div a {
-  transition: 0.3s;
-  color: #fff;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 2rem;
-}
-.company-main-ui-container nav div a:hover {
-  transition: 0.3s;
-  color: #ffd893;
-}
-.company-main-ui-container .company-main-ui {
-  color: #fff;
-}
-.company-main-ui-container .company-main-ui h1 {
-  font-size: 4rem;
-  margin-top: 50px;
-}
-.company-main-ui-container .company-main-ui .jobs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 50px auto;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card {
-  background-color: #666;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 30px 50px;
-  border-radius: 20px;
-  padding: 10px;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: #ffd893;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card h2 {
-  font-size: 2.5rem;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card p {
-  font-size: 2rem;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card div:nth-child(4) {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-}
-.company-main-ui-container .company-main-ui .jobs .job-card div:nth-child(4) button {
-  color: #f9c76c;
-  background-color: #666;
-  border: 1px solid #f9c76c;
-}
-
 .main-ui-container {
   margin: 0 auto;
+  height: 100vh;
 }
 .main-ui-container nav {
   background-color: #7851a9;
   display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 5rem;
 }
 .main-ui-container nav h3 {
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 10px;
 }
 .main-ui-container nav div {
-  width: 100%;
+  width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 30rem;
 }
 .main-ui-container nav div a {
   transition: 0.3s;
@@ -486,23 +431,25 @@ table {
 }
 .main-ui-container .main-ui .jobs .job-card {
   background-color: #666;
+  box-shadow: 23px 20px 20px #000000;
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: 30px 50px;
   border-radius: 20px;
-  padding: 10px;
+  padding: 0 50px 50px 50px;
 }
 .main-ui-container .main-ui .jobs .job-card h1 {
   font-size: 3rem;
-  margin: 0;
+  margin-bottom: 20px;
   color: #ffd893;
 }
 .main-ui-container .main-ui .jobs .job-card h2 {
   font-size: 2.5rem;
 }
 .main-ui-container .main-ui .jobs .job-card p {
-  font-size: 2rem;
+  font-size: 1rem;
+  margin-bottom: 40px;
 }
 .main-ui-container .main-ui .jobs .job-card div:nth-child(4) {
   margin-top: auto;
@@ -611,56 +558,62 @@ table {
   padding: 5px 5px;
 }
 
-seeker-profile-container {
+.seeker-profile-container {
   margin: 0 auto;
+  height: 100vh;
 }
-seeker-profile-container nav {
+.seeker-profile-container nav {
   background-color: #7851a9;
   display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 5rem;
 }
-seeker-profile-container nav h3 {
+.seeker-profile-container nav h3 {
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 70%;
   margin-left: 10px;
 }
-seeker-profile-container nav div {
-  width: 100%;
+.seeker-profile-container nav div {
+  width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 30rem;
 }
-seeker-profile-container nav div a {
+.seeker-profile-container nav div a {
   transition: 0.3s;
   color: #fff;
   text-decoration: none;
   margin: 0 20px;
   font-size: 2rem;
 }
-seeker-profile-container nav div a:hover {
+.seeker-profile-container nav div a:hover {
   transition: 0.3s;
   color: #ffd893;
 }
-seeker-profile-container .seeker-profile {
+.seeker-profile-container .seeker-profile {
   margin: 50px auto;
   background-color: #666;
   width: 500px;
   border-radius: 20px;
 }
-seeker-profile-container .seeker-profile h1 {
+.seeker-profile-container .seeker-profile h1 {
   margin-top: 30px;
   font-size: 3.5rem;
   color: #fff;
 }
-seeker-profile-container .seeker-profile .seeker-profile-info {
+.seeker-profile-container .seeker-profile .seeker-profile-info {
   padding: 30px;
 }
-seeker-profile-container .seeker-profile .seeker-profile-info h2 {
+.seeker-profile-container .seeker-profile .seeker-profile-info h2 {
   color: #ffd893;
   font-size: 2rem;
 }
-seeker-profile-container .hidden {
+.seeker-profile-container .hidden {
   display: none;
 }
-seeker-profile-container .button {
+.seeker-profile-container .button {
   outline: none;
   transition: 0.3s;
   font-size: 2rem;
@@ -672,153 +625,86 @@ seeker-profile-container .button {
   border-radius: 20px;
   padding: 5px 5px;
 }
-seeker-profile-container .button:hover {
+.seeker-profile-container .button:hover {
   transition: 0.3s;
   background-color: #f9c76c;
   cursor: pointer;
 }
 
-.company-matches-page-container {
+.matches-page-container {
   margin: 0 auto;
   background-color: #333;
+  height: 100vh;
 }
-.company-matches-page-container nav {
+.matches-page-container nav {
   background-color: #7851a9;
   display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 5rem;
 }
-.company-matches-page-container nav h3 {
+.matches-page-container nav h3 {
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 10px;
 }
-.company-matches-page-container nav div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.company-matches-page-container nav div a {
-  transition: 0.3s;
-  color: #fff;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 2rem;
-}
-.company-matches-page-container nav div a:hover {
-  transition: 0.3s;
-  color: #ffd893;
-}
-.company-matches-page-container .company-matches-page {
-  color: #fff;
-}
-.company-matches-page-container .company-matches-page h1 {
-  font-size: 4rem;
-  margin-top: 50px;
-}
-.company-matches-page-container .company-matches-page .seekers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card {
-  background-color: #666;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 30px 50px;
-  border-radius: 20px;
-  padding: 10px;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: #ffd893;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card h2 {
-  font-size: 2.5rem;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card p {
-  font-size: 2rem;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card div:nth-child(4) {
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-}
-.company-matches-page-container .company-matches-page .seekers .seeker-card div:nth-child(4) button {
-  color: #f9c76c;
-  background-color: #666;
-  border: 1px solid #f9c76c;
-}
-
-.main-ui-container {
-  margin: 0 auto;
-}
-.main-ui-container nav {
-  background-color: #7851a9;
-  display: flex;
-}
-.main-ui-container nav h3 {
-  color: #fff;
-  font-size: 2rem;
-  margin-left: 10px;
-}
-.main-ui-container nav div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.main-ui-container nav div a {
-  transition: 0.3s;
-  color: #fff;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 2rem;
-}
-.main-ui-container nav div a:hover {
-  transition: 0.3s;
-  color: #ffd893;
-}
-.main-ui-container .main-ui {
-  color: #fff;
-}
-.main-ui-container .main-ui h1 {
-  font-size: 4rem;
-  margin-top: 50px;
-}
-.main-ui-container .main-ui .jobs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 50px auto;
-}
-.main-ui-container .main-ui .jobs .job-card {
-  background-color: #666;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 30px 50px;
-  border-radius: 20px;
-  padding: 10px;
-}
-.main-ui-container .main-ui .jobs .job-card h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: #ffd893;
-}
-.main-ui-container .main-ui .jobs .job-card h2 {
-  font-size: 2.5rem;
-}
-.main-ui-container .main-ui .jobs .job-card p {
-  font-size: 2rem;
-}
-.main-ui-container .main-ui .jobs .job-card div:nth-child(4) {
-  margin-top: auto;
+.matches-page-container nav div {
+  width: 30%;
   display: flex;
   justify-content: space-between;
+  margin-left: 30rem;
 }
-.main-ui-container .main-ui .jobs .job-card div:nth-child(4) button {
-  cursor: pointer;
+.matches-page-container nav div a {
+  transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 2rem;
+}
+.matches-page-container nav div a:hover {
+  transition: 0.3s;
+  color: #ffd893;
+}
+.matches-page-container .seeker-matches-page {
+  color: #fff;
+}
+.matches-page-container .seeker-matches-page h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+}
+.matches-page-container .seeker-matches-page .jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card {
+  background-color: #666;
+  box-shadow: 23px 20px 20px #000000;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 30px 50px;
+  border-radius: 20px;
+  padding: 0 50px 50px 50px;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #ffd893;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card h2 {
+  font-size: 2.5rem;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card p {
+  font-size: 2rem;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card div:nth-child(4) {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.matches-page-container .seeker-matches-page .jobs .job-card div:nth-child(4) button {
   color: #f9c76c;
   background-color: #666;
   border: 1px solid #f9c76c;

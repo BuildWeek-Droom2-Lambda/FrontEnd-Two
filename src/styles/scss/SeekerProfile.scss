@@ -1,21 +1,25 @@
-seeker-profile-container {
+.seeker-profile-container {
   margin: 0 auto;
+  height: 100vh;
 
   nav {
     background-color: #7851a9;
     display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 5rem;
 
     h3 {
       color: #fff;
-      font-size: 2rem;
+      font-size: 3rem;
       margin-left: 10px;
     }
 
     div {
-      width: 100%;
+      width: 30%;
       display: flex;
-      justify-content: center;
-
+      justify-content: space-between;
+      margin-left: 30rem;
       a {
         transition: 0.3s;
         color: #fff;

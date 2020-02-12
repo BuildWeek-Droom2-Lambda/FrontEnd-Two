@@ -10,17 +10,16 @@ const SeekerMain = props => {
 
   return (
     <div className="main-ui-container">
+      <nav>
+        <h3>Droom</h3>
+        <div className="main-ui-nav">
+          <Link to="/seeker-profile">Profile</Link>
+          <Link to="/seeker-matches">Matches</Link>
+        </div>
+      </nav>
+
       {!props.isLoading ? (
         <>
-          <nav>
-            <h3>Droom</h3>
-            <div>
-              <Link to="/seekerprofilepage">Profile</Link>
-              <Link to="/seekermatchespage">Matches</Link>
-              <Link to="/seekermainui">Home</Link>
-            </div>
-          </nav>
-
           <div className="main-ui">
             <h1>Find Jobs</h1>
             <div className="jobs">

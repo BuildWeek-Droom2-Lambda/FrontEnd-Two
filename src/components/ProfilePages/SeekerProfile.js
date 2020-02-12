@@ -3,9 +3,8 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { axiosWithAuth } from "../Utils/axiosWithAuth";
 
-const SeekerProfilePage = ({ errors, touched, values, status }) => {
+const SeekerProfile = ({ errors, touched, values, status }) => {
   const [seeker, setSeeker] = useState({
     name: "",
     password: "",
@@ -24,29 +23,28 @@ const SeekerProfilePage = ({ errors, touched, values, status }) => {
     status && setSeeker(status);
   }, [status]);
 
-  useEffect(() => {
-    const userID = localStorage.getItem("userid");
-    axios
-      .get(`https://droom-node-server.herokuapp.com/api/seekers/${userID}`)
+  // useEffect(() => {
+  //   const userID = localStorage.getItem("userid");
+  //   axios
+  //     .get(`https://droom-node-server.herokuapp.com/api/seekers/${userID}`)
 
-      .then(res => {
-        console.log(res);
-        setSeeker(res.data);
-      })
+  //     .then(res => {
+  //       console.log(res);
+  //       setSeeker(res.data);
+  //     })
 
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <div className="seeker-profile-container">
       <nav>
         <h3>Droom</h3>
-        <div>
-          <Link to="/seekerprofilepage">Profile</Link>
-          <Link to="/seekermatchespage">Matches</Link>
-          <Link to="/seekermainui">Home</Link>
+        <div className="seeker-links">
+          <Link to="/seekermatch">Matches</Link>
+          <Link to="/seekerUI">Home</Link>
         </div>
       </nav>
 
@@ -113,7 +111,7 @@ const SeekerProfilePage = ({ errors, touched, values, status }) => {
   );
 };
 
-const FormikSeekerProfilePage = withFormik({
+const FormikSeekerProfile = withFormik({
   mapPropsToValues() {
     return {
       name: "",
@@ -128,29 +126,29 @@ const FormikSeekerProfilePage = withFormik({
     location: Yup.string().required("Location is required"),
     skills: Yup.string().required("Skills are required"),
     experience: Yup.string().required("Experience is required")
-  }),
+  })
 
-  handleSubmit(values, { resetForm, setStatus }) {
-    console.log("Seeker form values ", values);
+  // handleSubmit(values, { resetForm, setStatus }) {
+  //   console.log("Seeker form values ", values);
 
-    const userID = localStorage.getItem("userid");
-    axiosWithAuth()
-      .put(
-        `https://droom-node-server.herokuapp.com/api/seekers/${userID}`,
-        values
-      )
+  //   const userID = localStorage.getItem("userid");
+  //   axiosWithAuth()
+  //     .put(
+  //       `https://droom-node-server.herokuapp.com/api/seekers/${userID}`,
+  //       values
+  //     )
 
-      .then(res => {
-        console.log(res);
-        setStatus(true);
-        setStatus(res.data);
-        resetForm();
-      })
+  //     .then(res => {
+  //       console.log(res);
+  //       setStatus(true);
+  //       setStatus(res.data);
+  //       resetForm();
+  //     })
 
-      .catch(err => {
-        console.log(err);
-      });
-  }
-})(SeekerProfilePage);
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
+})(SeekerProfile);
 
-export default FormikSeekerProfilePage;
+export default FormikSeekerProfile;

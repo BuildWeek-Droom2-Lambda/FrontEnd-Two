@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Spinner from "../Utility/Spinner";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { getSeekers } from "../../Redux/actions/seekers";
 
 const CompanyMainUI = props => {
   const [seekers, setSeekers] = useState([]);
@@ -16,17 +16,7 @@ const CompanyMainUI = props => {
   console.log(seekers);
 
   useEffect(() => {
-    axios
-      .get("https://droom-node-server.herokuapp.com/api/seekers")
-
-      .then(res => {
-        console.log(res);
-        setSeekers(res.data);
-      })
-
-      .catch(err => {
-        console.log(err);
-      });
+    props.getSeekers();
   }, []);
 
   const userID = localStorage.getItem("userid");
@@ -43,18 +33,17 @@ const CompanyMainUI = props => {
       seeker_location: theSeeker.location
     });
 
-    axios
-      .post(
-        `https://droom-node-server.herokuapp.com/api/companies/${userID}/saved`,
-        savedSeeker
-      )
-
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+    // axios
+    //   .post(
+    //     `https://droom-node-server.herokuapp.com/api/companies/${userID}/saved`,
+    //     savedSeeker
+    //   )
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err.message);
+    //   });
   };
 
   const handleDelete = e => {
@@ -67,7 +56,7 @@ const CompanyMainUI = props => {
   };
 
   return (
-    <div className="company-main-ui-container">
+    <div className="main-ui-container">
       {!props.isLoading ? (
         <>
           <nav>
@@ -115,4 +104,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(CompanyMainUI);
+export default connect(mapStateToProps, { getSeekers })(CompanyMainUI);
