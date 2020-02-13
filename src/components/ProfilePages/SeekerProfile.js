@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
+import { getSeekerById, updateSeeker } from "../../Redux/actions/seekers";
 
-const SeekerProfile = ({ errors, touched, values, status }) => {
+const SeekerProfile = ({ errors, touched, values, status, getSeekerById }) => {
   const [seeker, setSeeker] = useState({
     name: "",
     password: "",
@@ -23,27 +24,17 @@ const SeekerProfile = ({ errors, touched, values, status }) => {
     status && setSeeker(status);
   }, [status]);
 
-  // useEffect(() => {
-  //   const userID = localStorage.getItem("userid");
-  //   axios
-  //     .get(`https://droom-node-server.herokuapp.com/api/seekers/${userID}`)
-
-  //     .then(res => {
-  //       console.log(res);
-  //       setSeeker(res.data);
-  //     })
-
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const ID = localStorage.getItem("userid");
+    getSeekerById(ID);
+  }, []);
 
   return (
     <div className="seeker-profile-container">
       <nav>
         <h3>Droom</h3>
         <div className="seeker-links">
-          <Link to="/seekermatch">Matches</Link>
+          <Link to="/seeker-matches">Matches</Link>
           <Link to="/seekerUI">Home</Link>
         </div>
       </nav>
@@ -126,29 +117,22 @@ const FormikSeekerProfile = withFormik({
     location: Yup.string().required("Location is required"),
     skills: Yup.string().required("Skills are required"),
     experience: Yup.string().required("Experience is required")
-  })
+  }),
 
-  // handleSubmit(values, { resetForm, setStatus }) {
-  //   console.log("Seeker form values ", values);
+  handleSubmit(values, props) {
+    console.log("Seeker form values ", values);
 
-  //   const userID = localStorage.getItem("userid");
-  //   axiosWithAuth()
-  //     .put(
-  //       `https://droom-node-server.herokuapp.com/api/seekers/${userID}`,
-  //       values
-  //     )
-
-  //     .then(res => {
-  //       console.log(res);
-  //       setStatus(true);
-  //       setStatus(res.data);
-  //       resetForm();
-  //     })
-
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+    const userID = localStorage.getItem("userID");
+    props.updateSeeker(userID);
+  }
 })(SeekerProfile);
 
-export default FormikSeekerProfile;
+const mapStateToProps = state => {
+  return {
+    seekers: state.seekers
+  };
+};
+
+export default connect(mapStateToProps, { getSeekerById, updateSeeker })(
+  FormikSeekerProfile
+);

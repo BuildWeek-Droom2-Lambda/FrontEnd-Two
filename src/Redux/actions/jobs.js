@@ -44,13 +44,13 @@ export const getJobs = () => dispatch => {
     });
 };
 
-//  action creator for getting a specific job by id. returns id, name, location, description, and company_id of the job
-export const getJobsById = id => dispatch => {
+//  action creator for getting a specific job by ID. returns ID, name, location, description, and company_id of the job
+export const getJobsById = ID => dispatch => {
   dispatch({
     type: GET_JOB_BY_ID_START
   });
   axiosWithAuth()
-    .get(`/jobs/${id}`)
+    .get(`/jobs/${ID}`)
     .then(res => {
       console.log("Result of API request for jobs by ID: ", res);
       dispatch({
@@ -91,12 +91,12 @@ export const addJob = newJob => dispatch => {
 };
 
 //  action creator for .put request to update a specific job. returns updated job object.
-export const updateJob = (id, updateJob) => dispatch => {
+export const updateJob = (ID, updateJob) => dispatch => {
   dispatch({
     type: UPDATE_JOB_START
   });
   axiosWithAuth()
-    .put(`/jobs/${id}`, updateJob)
+    .put(`/jobs/${ID}`, updateJob)
     .then(res => {
       console.log("This is the result of a put request to the API: ", res.data);
       dispatch({
@@ -114,10 +114,10 @@ export const updateJob = (id, updateJob) => dispatch => {
 };
 
 //  action creator for .delete request to delete a job. returns 1 if successful
-export const deleteJob = id => dispatch => {
-  dispatch({ type: DELETE_JOB_START, id });
+export const deleteJob = ID => dispatch => {
+  dispatch({ type: DELETE_JOB_START, ID });
   axiosWithAuth()
-    .delete(`http://localhost:3333/smurfs/${id}`)
+    .delete(`http://localhost:3333/smurfs/${ID}`)
     .then(res => {
       console.log("This is the result of a delete request to the API: ", res);
       dispatch({
@@ -126,7 +126,6 @@ export const deleteJob = id => dispatch => {
       });
     })
     .catch(err => {
-      console.log("ERROR: Smurf not deleted! ", err.message);
       dispatch({
         type: JOBS_FAILURE,
         payload: err.message

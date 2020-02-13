@@ -4,66 +4,48 @@ import { connect } from "react-redux";
 import Spinner from "../Utility/Spinner";
 
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { getSavedSeekers, deleteSavedSeeker } from "../../Redux/actions/saved";
 
-const CompanyMatch = props => {
+const CompanyMatch = ({
+  isLoading,
+  companyMatches,
+  getSavedSeekers,
+  deleteSavedSeeker
+}) => {
   const [savedSeekers, setSavedSeekers] = useState([]);
-  console.log(savedSeekers);
 
   useEffect(() => {
-    const userID = localStorage.getItem("userid");
-    axios
-      .get(
-        `https://droom-node-server.herokuapp.com/api/companies/${userID}/saved`
-      )
-
-      .then(res => {
-        console.log(res);
-        setSavedSeekers(res.data);
-      })
-
-      .catch(err => {
-        console.log(err);
-      });
+    const ID = localStorage.getItem("userID");
+    getSavedSeekers(ID);
   }, []);
 
   const handleDelete = e => {
-    let id = e.target.value;
+    let ID = e.target.value;
 
-    let updatedList = savedSeekers.filter(
-      seekers => seekers.seekerss_id !== id
+    let updatedList = companyMatches.filter(
+      companyMatches => companyMatches.id !== ID
     );
     setSavedSeekers(updatedList);
 
-    const userID = localStorage.getItem("userid");
-    axios
-      .delete(
-        `https://droom-node-server.herokuapp.com/api/companies/${userID}/saved/${id}`
-      )
+    const userID = localStorage.getItem("userID");
 
-      .then(res => {
-        console.log(res);
-      })
-
-      .catch(err => {
-        console.log(err.message);
-      });
+    deleteSavedSeeker(ID, userID);
   };
 
   return (
     <div className="matches-page-container">
-      {!props.isLoading ? (
+      {!isLoading ? (
         <>
           <nav>
             <h3>Droom</h3>
             <div>
-              <Link to="/companyprofilepage">Profile</Link>
-              <Link to="/companymatchespage">Matches</Link>
-              <Link to="/companymainui">Home</Link>
+              <Link to="/company-profile">Profile</Link>
+              <Link to="/company-matches">Matches</Link>
+              <Link to="/companyUI">Home</Link>
             </div>
           </nav>
 
-          <div className="company-matches-page">
+          <div className="matches-page">
             <h1>Your Saved Employees</h1>
             <div className="seekers">
               {savedSeekers.map(seekers => {
@@ -99,4 +81,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(CompanyMatch);
+export default connect(mapStateToProps, { getSavedSeekers, deleteSavedSeeker })(
+  CompanyMatch
+);

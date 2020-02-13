@@ -24,7 +24,7 @@ export const userRegister = newUser => dispatch => {
   axios
     .post(`${BASE_URL}/register`, newUser)
     .then(res => {
-      localStorage.setItem("userid", res.data.id);
+      localStorage.setItem("userID", res.data.id);
       dispatch({
         type: USER_REGISTER_SUCCESS,
         payload: res.data
@@ -51,7 +51,7 @@ export const userLogin = newUser => dispatch => {
       localStorage.setItem("token", res.data.token);
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: res.data,
+        payload: res.data.user,
         message: `SUCCESS! ${res.data} was returned`
       });
     })

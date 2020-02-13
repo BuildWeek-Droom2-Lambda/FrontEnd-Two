@@ -5,8 +5,17 @@ import { connect } from "react-redux";
 import { getJobs } from "../../Redux/actions/jobs";
 import { getSeekers } from "../../Redux/actions/seekers";
 import { getCompanies } from "../../Redux/actions/companies";
+import { getSavedCompanies } from "../../Redux/actions/saved";
 
-const LandingPage = ({ jobs, seekers, getJobs, getSeekers, getCompanies }) => {
+const LandingPage = ({
+  jobs,
+  seekers,
+  companies,
+  getJobs,
+  getSeekers,
+  getCompanies,
+  getSavedCompanies
+}) => {
   useEffect(() => {
     getJobs();
   }, []);
@@ -18,6 +27,11 @@ const LandingPage = ({ jobs, seekers, getJobs, getSeekers, getCompanies }) => {
   useEffect(() => {
     getCompanies();
   }, [seekers]);
+
+  useEffect(() => {
+    const ID = localStorage.getItem("userID");
+    getSavedCompanies(ID);
+  }, [companies]);
   return (
     <div className="landing-page">
       <h1>Droom</h1>
@@ -34,10 +48,14 @@ const LandingPage = ({ jobs, seekers, getJobs, getSeekers, getCompanies }) => {
 const mapStateToProps = state => {
   return {
     jobs: state.jobs,
-    seekers: state.seekers
+    seekers: state.seekers,
+    companies: state.companies
   };
 };
 
-export default connect(mapStateToProps, { getJobs, getSeekers, getCompanies })(
-  LandingPage
-);
+export default connect(mapStateToProps, {
+  getJobs,
+  getSeekers,
+  getCompanies,
+  getSavedCompanies
+})(LandingPage);

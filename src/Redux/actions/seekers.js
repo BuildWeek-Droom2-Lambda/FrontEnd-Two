@@ -39,13 +39,13 @@ export const getSeekers = () => dispatch => {
     });
 };
 
-export const getSeekerById = id => dispatch => {
+export const getSeekerById = ID => dispatch => {
   dispatch({
     type: GET_SEEKER_BY_ID_START,
-    id
+    ID
   });
   axiosWithAuth()
-    .get(`/seekers/${id}`)
+    .get(`/seekers/${ID}`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -62,14 +62,14 @@ export const getSeekerById = id => dispatch => {
     });
 };
 
-export const updateSeeker = (id, updateSeeker) => dispatch => {
+export const updateSeeker = (ID, seeker) => dispatch => {
   dispatch({
     type: UPDATE_SEEKER_START,
-    id,
-    updateSeeker
+    ID,
+    seeker
   });
   axiosWithAuth()
-    .put(`/seekers/${id}`)
+    .put(`/seekers/${ID}`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -86,13 +86,13 @@ export const updateSeeker = (id, updateSeeker) => dispatch => {
     });
 };
 
-export const deleteSeeker = id => dispatch => {
+export const deleteSeeker = ID => dispatch => {
   dispatch({
     type: DELETE_SEEKER_START,
-    id
+    ID
   });
   axiosWithAuth()
-    .delete(`/seekers/${id}`)
+    .delete(`/seekers/${ID}`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({

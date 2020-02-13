@@ -47,8 +47,10 @@ import {
   GET_SAVED_COMPANY_BY_ID_SUCCESS,
   GET_SAVED_SEEKER_BY_ID_START,
   GET_SAVED_SEEKER_BY_ID_SUCCESS,
-  ADD_SAVED_START,
-  ADD_SAVED_SUCCESS,
+  ADD_SAVED_COMPANY_START,
+  ADD_SAVED_COMPANY_SUCCESS,
+  ADD_SAVED_SEEKER_START,
+  ADD_SAVED_SEEKER_SUCCESS,
   DELETE_SAVED_COMPANY_START,
   DELETE_SAVED_COMPANY_SUCCESS,
   DELETE_SAVED_SEEKER_START,
@@ -99,7 +101,7 @@ export const rootReducer = (state = initialState, action) => {
     case USER_LOGIN_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "LOGGING IN... ",
         isLoading: true
       };
 
@@ -107,7 +109,8 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        user: action.payload,
+        message: `USER LOGGED IN, WELCOME USER ${action.payload.name}`,
         isLoading: false
       };
 
@@ -121,7 +124,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_COMPANIES_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING COMPANIES...",
         isLoading: true
       };
 
@@ -129,7 +132,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "COMPANY DATA RETRIEVED!",
         companies: action.payload,
         isLoading: false
       };
@@ -137,7 +140,7 @@ export const rootReducer = (state = initialState, action) => {
     case UPDATE_COMPANY_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "UPDATING PROFILE",
         isLoading: true
       };
 
@@ -145,14 +148,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "PROFILE SUCCESSFULLY UPDATED",
         isLoading: false
       };
 
     case DELETE_COMPANY_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "DELETING COMPANY",
         isLoading: true
       };
 
@@ -174,13 +177,14 @@ export const rootReducer = (state = initialState, action) => {
     case GET_JOBS_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING JOBS...",
         isLoading: true
       };
 
     case GET_JOBS_SUCCESS:
       return {
         ...state,
+        message: "SUCCESS: RETURNING ARRAY OF JOBS",
         isLoading: false,
         jobs: action.payload
       };
@@ -188,7 +192,7 @@ export const rootReducer = (state = initialState, action) => {
     case ADD_JOB_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "ADDING NEW JOB",
         isLoading: true
       };
 
@@ -196,14 +200,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "JOB SUCCESSFULLY ADDED",
         isLoading: false
       };
 
     case UPDATE_JOB_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "UPDATING JOB",
         isLoading: true
       };
 
@@ -211,14 +215,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "JOB SUCCESSFULLY UPDATED",
         isLoading: false
       };
 
     case DELETE_JOB_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "DELETING JOB",
         isLoading: true
       };
 
@@ -226,7 +230,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "JOB SUCCESSFULLY DELETED",
         isLoading: false
       };
 
@@ -240,13 +244,14 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SEEKERS_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING SEEKERS",
         isLoading: true
       };
 
     case GET_SEEKERS_SUCCESS:
       return {
         ...state,
+        message: "SEEKERS ARRAY SUCCESSFULLY RETURNED",
         isLoading: false,
         seekers: action.payload
       };
@@ -254,7 +259,7 @@ export const rootReducer = (state = initialState, action) => {
     case UPDATE_SEEKER_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "UPDATING PROFILE",
         isLoading: true
       };
 
@@ -262,14 +267,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "PROFILE SUCCESSFULLY UPDATED",
         isLoading: false
       };
 
     case DELETE_SEEKER_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "DELETING SEEKER",
         isLoading: true
       };
 
@@ -277,7 +282,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER LOGGED IN",
+        message: "SEEKER DELETED",
         isLoading: false
       };
 
@@ -291,7 +296,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_SAVED_COMPANIES_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING MATCHES FOR SEEKER",
         isLoading: true
       };
 
@@ -299,14 +304,15 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        seekerMatches: action.payload,
+        message: "MATCHES FOR SEEKER SUCCESSFULLY RETRIEVED",
         isLoading: false
       };
 
     case GET_SAVED_SEEKERS_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING MATCHES FOR COMPANY",
         isLoading: true
       };
 
@@ -314,14 +320,15 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        companyMatches: action.payload,
+        message: "COMPANY MATCHES SUCCESSFULLY RETRIEVED",
         isLoading: false
       };
 
     case GET_SAVED_COMPANY_BY_ID_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING COMPANY",
         isLoading: true
       };
 
@@ -329,14 +336,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "SUCCESS: COMPANY RETRIEVED",
         isLoading: false
       };
 
     case GET_SAVED_SEEKER_BY_ID_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "GETTING COMPANY MATCH",
         isLoading: true
       };
 
@@ -344,29 +351,44 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "COMPANY MATCH RETRIEVED",
         isLoading: false
       };
 
-    case ADD_SAVED_START:
+    case ADD_SAVED_COMPANY_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "SAVING...",
         isLoading: true
       };
 
-    case ADD_SAVED_SUCCESS:
+    case ADD_SAVED_COMPANY_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "MATCH SAVED!",
+        isLoading: false
+      };
+
+    case ADD_SAVED_SEEKER_START:
+      return {
+        ...state,
+        message: "SAVING...",
+        isLoading: true
+      };
+
+    case ADD_SAVED_SEEKER_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        message: "MATCH SAVED!",
         isLoading: false
       };
 
     case DELETE_SAVED_COMPANY_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "DELETING MATCH...",
         isLoading: true
       };
 
@@ -374,14 +396,14 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "MATCH DELETED!",
         isLoading: false
       };
 
     case DELETE_SAVED_SEEKER_START:
       return {
         ...state,
-        message: "BEGINNING API CALL... ",
+        message: "DELETING MATCH...",
         isLoading: true
       };
 
@@ -389,7 +411,7 @@ export const rootReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        message: "USER DATA RETRIEVED",
+        message: "MATCH DELETED!",
         isLoading: false
       };
 

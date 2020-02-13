@@ -15,7 +15,6 @@ import SeekerMatch from "./components/Matches/SeekerMatch";
 import CompanyMatch from "./components/Matches/CompanyMatch";
 import FormikCompanyProfile from "./components/ProfilePages/CompanyProfile";
 import FormikSeekerProfile from "./components/ProfilePages/SeekerProfile";
-import UpdateForm from "./components/UpdateForm/UpdateForm";
 import Jobs from "./components/Additional/Jobs";
 import NoMatch from "./components/Utility/NoMatch";
 
@@ -58,10 +57,6 @@ const Routes = props => {
 
         <ProtectedRoute path="/seeker-profile">
           <FormikSeekerProfile isLoading={props.isLoading} />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/update">
-          <UpdateForm isLoading={props.isLoading} />
         </ProtectedRoute>
 
         <ProtectedRoute path="/jobs">
