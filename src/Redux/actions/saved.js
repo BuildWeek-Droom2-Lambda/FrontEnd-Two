@@ -1,12 +1,11 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 //  action type variables for saved matches API endpoint interaction
-export const GET_SAVED_COMPANIES_START = "GET_SAVED_COMPANIES_START";
-export const GET_SAVED_COMPANIES_SUCCESS = "GET_SAVED_COMPANIES_SUCCESS";
+export const GET_SAVED_JOBS_START = "GET_SAVED_JOBS_START";
+export const GET_SAVED_JOBS_SUCCESS = "GET_SAVED_JOBS_SUCCESS";
 
-export const GET_SAVED_COMPANY_BY_ID_START = "GET_SAVED_COMPANY_BY_ID_START";
-export const GET_SAVED_COMPANY_BY_ID_SUCCESS =
-  "GET_SAVED_COMPANY_BY_ID_SUCCESS";
+export const GET_SAVED_JOB_BY_ID_START = "GET_SAVED_JOB_BY_ID_START";
+export const GET_SAVED_JOB_BY_ID_SUCCESS = "GET_SAVED_JOB_BY_ID_SUCCESS";
 
 export const GET_SAVED_SEEKERS_START = "GET_SAVED_SEEKERS_START";
 export const GET_SAVED_SEEKERS_SUCCESS = "GET_SAVED_SEEKERS_SUCCESS";
@@ -14,14 +13,14 @@ export const GET_SAVED_SEEKERS_SUCCESS = "GET_SAVED_SEEKERS_SUCCESS";
 export const GET_SAVED_SEEKER_BY_ID_START = "GET_SAVED_SEEKER_BY_ID_START";
 export const GET_SAVED_SEEKER_BY_ID_SUCCESS = "GET_SAVED_SEEKER_BY_ID_SUCCESS";
 
-export const ADD_SAVED_COMPANY_START = "ADD_SAVED_COMPANY_START";
-export const ADD_SAVED_COMPANY_SUCCESS = "ADD_SAVED_COMPANY_SUCCESS";
+export const ADD_SAVED_JOB_START = "ADD_SAVED_JOB_START";
+export const ADD_SAVED_JOB_SUCCESS = "ADD_SAVED_JOB_SUCCESS";
 
 export const ADD_SAVED_SEEKER_START = "ADD_SAVED_SEEKER_START";
 export const ADD_SAVED_SEEKER_SUCCESS = "ADD_SAVED_SEEKER_SUCCESS";
 
-export const DELETE_SAVED_COMPANY_START = "DELETE_SAVED_COMPANY_START";
-export const DELETE_SAVED_COMPANY_SUCCESS = "DELETE_SAVED__COMPANY_SUCCESS";
+export const DELETE_SAVED_JOB_START = "DELETE_SAVED_COMPANY_START";
+export const DELETE_SAVED_JOB_SUCCESS = "DELETE_SAVED__COMPANY_SUCCESS";
 
 export const DELETE_SAVED_SEEKER_START = "DELETE_SAVED_SEEKER_START";
 export const DELETE_SAVED_SEEKER_SUCCESS = "DELETE_SAVED_SEEKER_SUCCESS";
@@ -31,17 +30,17 @@ export const SAVED_FAILURE = "SAVED_FAILURE";
 export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
 
 //  action creator for .get request to get the array of companies that have matched with a seeker
-export const getSavedCompanies = ID => dispatch => {
+export const getSavedJobs = ID => dispatch => {
   dispatch({
-    type: GET_SAVED_COMPANIES_START,
+    type: GET_SAVED_JOBS_START,
     ID
   });
   axiosWithAuth()
-    .get(`/companies/${ID}/saved`)
+    .get(`/seekers/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: GET_SAVED_COMPANIES_SUCCESS,
+        type: GET_SAVED_JOBS_SUCCESS,
         payload: res.data
       });
     })
@@ -61,7 +60,7 @@ export const getSavedSeekers = ID => dispatch => {
     ID
   });
   axiosWithAuth()
-    .get(`/seekers/${ID}/saved`)
+    .get(`/companies/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -79,16 +78,16 @@ export const getSavedSeekers = ID => dispatch => {
 };
 
 //  action creator to get a specific matched company by its company_id
-export const getSavedCompanyById = ID => dispatch => {
+export const getSavedJobById = ID => dispatch => {
   dispatch({
-    type: GET_SAVED_COMPANY_BY_ID_START
+    type: GET_SAVED_JOB_BY_ID_START
   });
   axiosWithAuth()
-    .get(`/companies/${ID}/saved`)
+    .get(`/seekers/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: GET_SAVED_COMPANY_BY_ID_SUCCESS,
+        type: GET_SAVED_JOB_BY_ID_SUCCESS,
         payload: res.data
       });
     })
@@ -125,18 +124,18 @@ export const getSavedSeekerById = ID => dispatch => {
 };
 
 //  action creator to handle when a seeker and a job match. returns the job object.
-export const addSavedCompany = (ID, newSave) => dispatch => {
+export const addSavedJob = (ID, savedJob) => dispatch => {
   dispatch({
-    type: ADD_SAVED_COMPANY_START,
-    newSave,
-    ID
+    type: ADD_SAVED_JOB_START,
+    ID,
+    savedJob
   });
   axiosWithAuth()
-    .get(`/companies/${ID}/saved`)
+    .post(`/seekers/${ID}/saved`, savedJob)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: ADD_SAVED_COMPANY_SUCCESS,
+        type: ADD_SAVED_JOB_SUCCESS,
         payload: res.data
       });
     })
@@ -149,9 +148,9 @@ export const addSavedCompany = (ID, newSave) => dispatch => {
     });
 };
 
-export const deleteSavedCompany = ID => dispatch => {
+export const deleteSavedJob = ID => dispatch => {
   dispatch({
-    type: DELETE_SAVED_COMPANY_START,
+    type: DELETE_SAVED_JOB_START,
     ID
   });
   axiosWithAuth()
@@ -159,7 +158,7 @@ export const deleteSavedCompany = ID => dispatch => {
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: DELETE_SAVED_COMPANY_SUCCESS,
+        type: DELETE_SAVED_JOB_SUCCESS,
         payload: res.data
       });
     })

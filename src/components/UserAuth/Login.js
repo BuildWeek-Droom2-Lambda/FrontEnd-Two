@@ -8,11 +8,11 @@ import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 
-const Login = props => {
+const Login = ({ user, userLogin, isLoading }) => {
   let history = useHistory();
 
   const [newUser, setNewUser] = useState({
-    id: null,
+    id: "",
     name: "",
     password: "",
     type: ""
@@ -23,19 +23,19 @@ const Login = props => {
       ...newUser,
       [e.target.name]: e.target.value
     });
-    console.log(newUser);
+    console.log("This is newUser in the Login.js handleChange: ", newUser);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(newUser);
-    props.userLogin(newUser);
-    history.push(`/${newUser.type}UI`);
-  };
+    console.log("This is newUser in the Login.js handleSubmit: ", newUser);
 
+    userLogin(newUser);
+    history.replace(`/${newUser.type}UI`);
+  };
   return (
     <div className="login-form-wrapper">
-      {!props.isLoading ? (
+      {!isLoading ? (
         <form onSubmit={handleSubmit} className="auth-form">
           <label htmlFor="username">Enter Username</label>
           <input
@@ -79,7 +79,8 @@ const Login = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    user: state.user
   };
 };
 

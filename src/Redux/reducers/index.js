@@ -39,20 +39,20 @@ import {
 } from "../actions/seekers";
 
 import {
-  GET_SAVED_COMPANIES_START,
+  GET_SAVED_JOBS_START,
   GET_SAVED_SEEKERS_START,
-  GET_SAVED_COMPANIES_SUCCESS,
+  GET_SAVED_JOBS_SUCCESS,
   GET_SAVED_SEEKERS_SUCCESS,
-  GET_SAVED_COMPANY_BY_ID_START,
-  GET_SAVED_COMPANY_BY_ID_SUCCESS,
+  GET_SAVED_JOB_BY_ID_START,
+  GET_SAVED_JOB_BY_ID_SUCCESS,
   GET_SAVED_SEEKER_BY_ID_START,
   GET_SAVED_SEEKER_BY_ID_SUCCESS,
-  ADD_SAVED_COMPANY_START,
-  ADD_SAVED_COMPANY_SUCCESS,
+  ADD_SAVED_JOB_START,
+  ADD_SAVED_JOB_SUCCESS,
   ADD_SAVED_SEEKER_START,
   ADD_SAVED_SEEKER_SUCCESS,
-  DELETE_SAVED_COMPANY_START,
-  DELETE_SAVED_COMPANY_SUCCESS,
+  DELETE_SAVED_JOB_START,
+  DELETE_SAVED_JOB_SUCCESS,
   DELETE_SAVED_SEEKER_START,
   DELETE_SAVED_SEEKER_SUCCESS,
   SAVED_FAILURE
@@ -106,10 +106,9 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case USER_LOGIN_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
-        user: action.payload,
+
         message: `USER LOGGED IN, WELCOME USER ${action.payload.name}`,
         isLoading: false
       };
@@ -293,14 +292,14 @@ export const rootReducer = (state = initialState, action) => {
         message: `Error: ${action.payload.err}`
       };
 
-    case GET_SAVED_COMPANIES_START:
+    case GET_SAVED_JOBS_START:
       return {
         ...state,
         message: "GETTING MATCHES FOR SEEKER",
         isLoading: true
       };
 
-    case GET_SAVED_COMPANIES_SUCCESS:
+    case GET_SAVED_JOBS_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
@@ -325,14 +324,14 @@ export const rootReducer = (state = initialState, action) => {
         isLoading: false
       };
 
-    case GET_SAVED_COMPANY_BY_ID_START:
+    case GET_SAVED_JOB_BY_ID_START:
       return {
         ...state,
         message: "GETTING COMPANY",
         isLoading: true
       };
 
-    case GET_SAVED_COMPANY_BY_ID_SUCCESS:
+    case GET_SAVED_JOB_BY_ID_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
@@ -355,14 +354,14 @@ export const rootReducer = (state = initialState, action) => {
         isLoading: false
       };
 
-    case ADD_SAVED_COMPANY_START:
+    case ADD_SAVED_JOB_START:
       return {
         ...state,
         message: "SAVING...",
         isLoading: true
       };
 
-    case ADD_SAVED_COMPANY_SUCCESS:
+    case ADD_SAVED_JOB_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
@@ -385,14 +384,14 @@ export const rootReducer = (state = initialState, action) => {
         isLoading: false
       };
 
-    case DELETE_SAVED_COMPANY_START:
+    case DELETE_SAVED_JOB_START:
       return {
         ...state,
         message: "DELETING MATCH...",
         isLoading: true
       };
 
-    case DELETE_SAVED_COMPANY_SUCCESS:
+    case DELETE_SAVED_JOB_SUCCESS:
       console.log(action.payload);
       return {
         ...state,

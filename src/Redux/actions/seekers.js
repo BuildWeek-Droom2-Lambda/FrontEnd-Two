@@ -62,14 +62,19 @@ export const getSeekerById = ID => dispatch => {
     });
 };
 
-export const updateSeeker = (ID, seeker) => dispatch => {
+export const updateSeeker = (ID, values) => dispatch => {
+  console.log(
+    "The values of values variable in seekers.js .put request: ",
+    values
+  );
   dispatch({
     type: UPDATE_SEEKER_START,
     ID,
-    seeker
+    values
   });
+
   axiosWithAuth()
-    .put(`/seekers/${ID}`)
+    .put(`/seekers/${ID}`, values)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({

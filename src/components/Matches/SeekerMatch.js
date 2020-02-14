@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
 
-import { getSavedSeekers, getSavedCompanies } from "../../Redux/actions/saved";
+import { getSavedSeekers, getSavedJobs } from "../../Redux/actions/saved";
 import { Link } from "react-router-dom";
 
 const SeekerMatch = ({
   seekerMatches,
   companyMatches,
   getSavedSeekers,
-  getSavedCompanies
+  getSavedJobs
 }) => {
   // const [savedJobs, setSavedJobs] = useState([]);
   // console.log(savedJobs);
 
   useEffect(() => {
     const ID = localStorage.getItem("userID");
-    getSavedCompanies(ID);
+    getSavedJobs(ID);
   }, []);
 
   // const handleDelete = e => {
@@ -78,6 +78,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSavedSeekers, getSavedCompanies })(
+export default connect(mapStateToProps, { getSavedSeekers, getSavedJobs })(
   SeekerMatch
 );

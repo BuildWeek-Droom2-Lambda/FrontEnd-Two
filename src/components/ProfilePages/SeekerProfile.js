@@ -36,6 +36,7 @@ const SeekerProfile = ({ errors, touched, values, status, getSeekerById }) => {
         <div className="seeker-links">
           <Link to="/seeker-matches">Matches</Link>
           <Link to="/seekerUI">Home</Link>
+          <Link to="/">Log Out</Link>
         </div>
       </nav>
 
@@ -119,11 +120,10 @@ const FormikSeekerProfile = withFormik({
     experience: Yup.string().required("Experience is required")
   }),
 
-  handleSubmit(values, props) {
+  handleSubmit(values) {
+    const ID = localStorage.getItem("userID");
     console.log("Seeker form values ", values);
-
-    const userID = localStorage.getItem("userID");
-    props.updateSeeker(userID);
+    updateSeeker(ID, values);
   }
 })(SeekerProfile);
 

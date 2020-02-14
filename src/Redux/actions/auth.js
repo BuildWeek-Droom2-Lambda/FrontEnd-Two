@@ -17,9 +17,10 @@ export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
 // action creator for registering a user. Returns new user object - need to implement some type of logic for diff by user_type
 
 export const userRegister = newUser => dispatch => {
+  console.log("newUser at the userRegister action creator: ", newUser);
   dispatch({
     type: USER_REGISTER_START,
-    payload: newUser
+    newUser
   });
   axios
     .post(`${BASE_URL}/register`, newUser)
@@ -51,7 +52,7 @@ export const userLogin = newUser => dispatch => {
       localStorage.setItem("token", res.data.token);
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: res.data.user,
+        payload: res.data,
         message: `SUCCESS! ${res.data} was returned`
       });
     })

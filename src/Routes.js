@@ -27,47 +27,37 @@ const Routes = props => {
   return (
     <div className="App">
       <Switch>
-        <ProtectedRoute path="/seekerUI">
-          <SeekerMain
-            jobs={props.jobs}
-            isLoading={props.isLoading}
-            getJobs={props.getJobs}
-          />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/companyUI">
-          <CompanyMain
-            seekers={props.seekers}
-            isLoading={props.isLoading}
-            getSeekers={props.getSeeekers}
-          />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/company-matches">
-          <CompanyMatch isLoading={props.isLoading} />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/seeker-matches">
-          <SeekerMatch isLoading={props.isLoading} />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/company-profile">
-          <FormikCompanyProfile isLoading={props.isLoading} />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/seeker-profile">
-          <FormikSeekerProfile isLoading={props.isLoading} />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/jobs">
-          <Jobs isLoading={props.isLoading} />
-        </ProtectedRoute>
-
         <Route exact path="/">
           <LandingPage />
         </Route>
 
-        <Route path="/register">
+        <ProtectedRoute exact path="/seekerUI" component={SeekerMain} />
+
+        <ProtectedRoute exact path="/companyUI" component={CompanyMain} />
+
+        <ProtectedRoute
+          exact
+          path="/company-matches"
+          component={CompanyMatch}
+        />
+
+        <ProtectedRoute exact path="/seeker-matches" component={SeekerMatch} />
+
+        <ProtectedRoute
+          exact
+          path="/company-profile"
+          component={FormikCompanyProfile}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/seeker-profile"
+          component={FormikSeekerProfile}
+        />
+
+        <ProtectedRoute exact path="/jobs" component={Jobs} />
+
+        <Route exact path="/register">
           <Register />
         </Route>
 
