@@ -4,12 +4,8 @@ import Spinner from "../Utility/Spinner";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { getJobs } from "../../Redux/actions/jobs";
-import {
-  getSavedJobs,
-  addSavedJob,
-  deleteSavedJob
-} from "../../Redux/actions/saved";
+import { getJobs, deleteJob } from "../../Redux/actions/jobs";
+import { getSavedJobs, addSavedJob } from "../../Redux/actions/saved";
 
 const SeekerMain = ({
   jobs,
@@ -17,7 +13,7 @@ const SeekerMain = ({
   isLoading,
   getSavedJobs,
   addSavedJob,
-  deleteSavedJob
+  deleteJob
 }) => {
   const [savedJob, setSavedJob] = useState();
 
@@ -25,28 +21,23 @@ const SeekerMain = ({
     getJobs();
   }, []);
 
-  const handleSave = (e, jobs) => {
-    const ID = localStorage.getItem("userID");
-    const id = e.target.value;
-    jobs.filter(job => {
-job = job.id !== id
-        }
-  
+  //   const handleSave = (e, jobs) => {
+  //     const ID = localStorage.getItem("userID");
+  //     const id = e.target.value;
+  //     jobs.filter(job => {
+  // job = job.id !== id
+  //         }
 
-        setSavedJob(job);
-        addSavedJob(ID, savedJob);
-        }
-
-    
-    
-  };
+  //         setSavedJob(job);
+  //         addSavedJob(ID, savedJob);
+  //         }
 
   const handleDelete = e => {
-    e.preventDefualt();
+    e.preventDefault();
     const ID = localStorage.getItem("userID");
     const id = e.target.value;
 
-    deleteSavedJob(ID, id);
+    deleteJob(ID, id);
   };
 
   const handleClick = () => {
@@ -81,7 +72,7 @@ job = job.id !== id
                     <p>{job.description}</p>
                     <div>
                       <button onClick={handleDelete}>X</button>
-                      <button onClick={handleSave}>Save</button>
+                      <button>Save</button>
                     </div>
                   </div>
                 );
@@ -107,5 +98,6 @@ export default connect(mapStateToProps, {
   getJobs,
   getSavedJobs,
   addSavedJob,
-  deleteSavedJob
+
+  deleteJob
 })(SeekerMain);

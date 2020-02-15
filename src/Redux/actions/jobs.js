@@ -117,7 +117,7 @@ export const updateJob = (ID, updateJob) => dispatch => {
 export const deleteJob = ID => dispatch => {
   dispatch({ type: DELETE_JOB_START, ID });
   axiosWithAuth()
-    .delete(`http://localhost:3333/smurfs/${ID}`)
+    .delete(`${BASE_URL}/jobss/${ID}`)
     .then(res => {
       console.log("This is the result of a delete request to the API: ", res);
       dispatch({
