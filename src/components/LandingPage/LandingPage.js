@@ -18,6 +18,7 @@ const LandingPage = ({ jobs, seekers, getJobs, getSeekers, getCompanies }) => {
   useEffect(() => {
     getCompanies();
   }, [seekers]);
+
   return (
     <div className="landing-page">
       <h1>Droom</h1>
@@ -38,6 +39,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getJobs, getSeekers, getCompanies })(
-  LandingPage
-);
+export default connect(mapStateToProps, {
+  getJobs,
+  getSeekers,
+  getCompanies
+})(LandingPage);

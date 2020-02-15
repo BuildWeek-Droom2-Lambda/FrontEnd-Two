@@ -42,13 +42,13 @@ export const getCompanies = () => dispatch => {
 };
 
 //  action creator for getting a specific company by company_id. returns id, name, location, and bio of company
-export const getCompanyById = id => dispatch => {
+export const getCompanyById = ID => dispatch => {
   dispatch({
     type: GET_COMPANY_BY_ID_START,
-    id
+    ID
   });
   axiosWithAuth()
-    .get(`/companies/${id}`)
+    .get(`/companies/${ID}`)
     .then(res => {
       console.log("Result of GET company by ID: ", res.data);
       dispatch({
@@ -66,12 +66,12 @@ export const getCompanyById = id => dispatch => {
 };
 
 //  action creator for .put request to update a company. returns id and name of updated company
-export const updateCompany = (id, values) => dispatch => {
+export const updateCompany = (ID, values) => dispatch => {
   dispatch({
     type: UPDATE_COMPANY_START
   });
   axiosWithAuth()
-    .put(`/companies/smurfs/${id}`, values)
+    .put(`/companies/${ID}`, values)
     .then(res => {
       console.log("This is the result of a put request to the API: ", res.data);
       dispatch({
@@ -90,13 +90,13 @@ export const updateCompany = (id, values) => dispatch => {
 
 //  action creator for .delete request to remove a company from the database. returns 1 if successful.
 //  WARNING: deleting a company also deletes all jobs associated with the company by company_id
-export const deleteCompany = id => dispatch => {
+export const deleteCompany = ID => dispatch => {
   dispatch({
     type: DELETE_COMPANY_START,
-    id
+    ID
   });
   axiosWithAuth()
-    .delete(`http://localhost:3333/smurfs/${id}`)
+    .delete(`/companies/${ID}`)
     .then(res => {
       console.log("This is the result of a delete request to the API: ", res);
       dispatch({

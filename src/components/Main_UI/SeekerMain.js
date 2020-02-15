@@ -1,37 +1,78 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "../Utility/Spinner";
 
 import { Link } from "react-router-dom";
 
-const SeekerMain = props => {
+import { connect } from "react-redux";
+import { getJobs, deleteJob } from "../../Redux/actions/jobs";
+import { getSavedJobs, addSavedJob } from "../../Redux/actions/saved";
+
+const SeekerMain = ({
+  jobs,
+  getJobs,
+  isLoading,
+  getSavedJobs,
+  addSavedJob,
+  deleteJob
+}) => {
+  const [savedJob, setSavedJob] = useState();
+
   useEffect(() => {
-    props.getJobs();
+    getJobs();
   }, []);
+
+  //   const handleSave = (e, jobs) => {
+  //     const ID = localStorage.getItem("userID");
+  //     const id = e.target.value;
+  //     jobs.filter(job => {
+  // job = job.id !== id
+  //         }
+
+  //         setSavedJob(job);
+  //         addSavedJob(ID, savedJob);
+  //         }
+
+  const handleDelete = e => {
+    e.preventDefault();
+    const ID = localStorage.getItem("userID");
+    const id = e.target.value;
+
+    deleteJob(ID, id);
+  };
+
+  const handleClick = () => {
+    const ID = localStorage.getItem("userID");
+    getSavedJobs(ID);
+  };
 
   return (
     <div className="main-ui-container">
       <nav>
         <h3>Droom</h3>
         <div className="main-ui-nav">
-          <Link to="/seeker-profile">Profile</Link>
-          <Link to="/seeker-matches">Matches</Link>
+          <Link to="/seeker-profile" onClick={handleClick}>
+            Profile
+          </Link>
+          <Link to="/seeker-matches" onClick={handleClick}>
+            Matches
+          </Link>
         </div>
       </nav>
 
-      {!props.isLoading ? (
+      {!isLoading ? (
         <>
           <div className="main-ui">
             <h1>Find Jobs</h1>
             <div className="jobs">
-              {props.jobs.map(job => {
+              {jobs.map(job => {
                 return (
                   <div key={job.id} className="job-card">
                     <h1>{job.name}</h1>
                     <h2>{job.location}</h2>
                     <p>{job.description}</p>
                     <div>
-                      <button value={job.id}>X</button>
-                      <button value={job.id}>Save</button>
+                      <button onClick={handleDelete}>X</button>
+                      <button>Save</button>
                     </div>
                   </div>
                 );
@@ -46,4 +87,17 @@ const SeekerMain = props => {
   );
 };
 
-export default SeekerMain;
+const mapStateToProps = state => {
+  return {
+    jobs: state.jobs,
+    isLoading: state.isLoading
+  };
+};
+
+export default connect(mapStateToProps, {
+  getJobs,
+  getSavedJobs,
+  addSavedJob,
+
+  deleteJob
+})(SeekerMain);

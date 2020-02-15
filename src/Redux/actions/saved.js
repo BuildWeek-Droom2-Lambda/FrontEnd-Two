@@ -1,43 +1,46 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 //  action type variables for saved matches API endpoint interaction
-export const GET_SAVED_COMPANIES_START = "GET_SAVED_START";
-export const GET_SAVED_COMPANIES_SUCCESS = "GET_SAVED_SUCCESS";
+export const GET_SAVED_JOBS_START = "GET_SAVED_JOBS_START";
+export const GET_SAVED_JOBS_SUCCESS = "GET_SAVED_JOBS_SUCCESS";
 
-export const GET_SAVED_COMPANY_BY_ID_START = "GET_SAVED_BY_ID_START";
-export const GET_SAVED_COMPANY_BY_ID_SUCCESS = "GET_SAVED_BY_ID_SUCCESS";
+export const GET_SAVED_JOB_BY_ID_START = "GET_SAVED_JOB_BY_ID_START";
+export const GET_SAVED_JOB_BY_ID_SUCCESS = "GET_SAVED_JOB_BY_ID_SUCCESS";
 
-export const GET_SAVED_SEEKERS_START = "GET_SAVED_START";
-export const GET_SAVED_SEEKERS_SUCCESS = "GET_SAVED_START";
+export const GET_SAVED_SEEKERS_START = "GET_SAVED_SEEKERS_START";
+export const GET_SAVED_SEEKERS_SUCCESS = "GET_SAVED_SEEKERS_SUCCESS";
 
-export const GET_SAVED_SEEKER_BY_ID_START = "GET_SAVED_START";
-export const GET_SAVED_SEEKER_BY_ID_SUCCESS = "GET_SAVED_START";
+export const GET_SAVED_SEEKER_BY_ID_START = "GET_SAVED_SEEKER_BY_ID_START";
+export const GET_SAVED_SEEKER_BY_ID_SUCCESS = "GET_SAVED_SEEKER_BY_ID_SUCCESS";
 
-export const ADD_SAVED_START = "ADD_SAVED_START";
-export const ADD_SAVED_SUCCESS = "ADD_SAVED_SUCCESS";
+export const ADD_SAVED_JOB_START = "ADD_SAVED_JOB_START";
+export const ADD_SAVED_JOB_SUCCESS = "ADD_SAVED_JOB_SUCCESS";
 
-export const DELETE_SAVED_COMPANY_START = "DELETE_SAVED_START";
-export const DELETE_SAVED_COMPANY_SUCCESS = "DELETE_SAVED_SUCCESS";
+export const ADD_SAVED_SEEKER_START = "ADD_SAVED_SEEKER_START";
+export const ADD_SAVED_SEEKER_SUCCESS = "ADD_SAVED_SEEKER_SUCCESS";
 
-export const DELETE_SAVED_SEEKER_START = "DELETE_SAVED_START";
-export const DELETE_SAVED_SEEKER_SUCCESS = "DELETE_SAVED_SUCCESS";
+export const DELETE_SAVED_JOB_START = "DELETE_SAVED_COMPANY_START";
+export const DELETE_SAVED_JOB_SUCCESS = "DELETE_SAVED__COMPANY_SUCCESS";
+
+export const DELETE_SAVED_SEEKER_START = "DELETE_SAVED_SEEKER_START";
+export const DELETE_SAVED_SEEKER_SUCCESS = "DELETE_SAVED_SEEKER_SUCCESS";
 
 export const SAVED_FAILURE = "SAVED_FAILURE";
 
 export const BASE_URL = "https://droom-node-server.herokuapp.com/api";
 
 //  action creator for .get request to get the array of companies that have matched with a seeker
-export const getSavedCompanies = id => dispatch => {
+export const getSavedJobs = ID => dispatch => {
   dispatch({
-    type: GET_SAVED_COMPANIES_START,
-    id
+    type: GET_SAVED_JOBS_START,
+    ID
   });
   axiosWithAuth()
-    .get(`/companies/${id}/saved`)
+    .get(`/seekers/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: GET_SAVED_COMPANIES_SUCCESS,
+        type: GET_SAVED_JOBS_SUCCESS,
         payload: res.data
       });
     })
@@ -51,13 +54,13 @@ export const getSavedCompanies = id => dispatch => {
 };
 
 // action creator for .get request to get the array of seekers that have matched with a company
-export const getSavedSeekers = id => dispatch => {
+export const getSavedSeekers = ID => dispatch => {
   dispatch({
     type: GET_SAVED_SEEKERS_START,
-    id
+    ID
   });
   axiosWithAuth()
-    .get(`/seekers/${id}/saved`)
+    .get(`/companies/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -75,16 +78,16 @@ export const getSavedSeekers = id => dispatch => {
 };
 
 //  action creator to get a specific matched company by its company_id
-export const getSavedCompanyById = id => dispatch => {
+export const getSavedJobById = ID => dispatch => {
   dispatch({
-    type: GET_SAVED_COMPANY_BY_ID_START
+    type: GET_SAVED_JOB_BY_ID_START
   });
   axiosWithAuth()
-    .get(`/companies/${id}/saved`)
+    .get(`/seekers/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: GET_SAVED_COMPANY_BY_ID_SUCCESS,
+        type: GET_SAVED_JOB_BY_ID_SUCCESS,
         payload: res.data
       });
     })
@@ -97,13 +100,13 @@ export const getSavedCompanyById = id => dispatch => {
     });
 };
 
-//  action creator to get a specific seeker by its id
-export const getSavedSeekerById = id => dispatch => {
+//  action creator to get a specific seeker by its{ID
+export const getSavedSeekerById = ID => dispatch => {
   dispatch({
     type: GET_SAVED_SEEKER_BY_ID_START
   });
   axiosWithAuth()
-    .get(`/companies/${id}/saved`)
+    .get(`/companies/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
@@ -121,18 +124,18 @@ export const getSavedSeekerById = id => dispatch => {
 };
 
 //  action creator to handle when a seeker and a job match. returns the job object.
-export const addSaved = (id, newSave) => dispatch => {
+export const addSavedJob = (ID, savedJob) => dispatch => {
   dispatch({
-    type: ADD_SAVED_START,
-    newSave,
-    id
+    type: ADD_SAVED_JOB_START,
+    ID,
+    savedJob
   });
   axiosWithAuth()
-    .get(`/companies/${id}/saved`)
+    .post(`/seekers/${ID}/saved`, savedJob)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: ADD_SAVED_SUCCESS,
+        type: ADD_SAVED_JOB_SUCCESS,
         payload: res.data
       });
     })
@@ -145,17 +148,17 @@ export const addSaved = (id, newSave) => dispatch => {
     });
 };
 
-export const deleteSavedCompany = id => dispatch => {
+export const deleteSavedJob = ID => dispatch => {
   dispatch({
-    type: DELETE_SAVED_COMPANY_START,
-    id
+    type: DELETE_SAVED_JOB_START,
+    ID
   });
   axiosWithAuth()
-    .delete(`/companies/${id}/saved`)
+    .delete(`/seekers/${ID}/saved`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({
-        type: DELETE_SAVED_COMPANY_SUCCESS,
+        type: DELETE_SAVED_JOB_SUCCESS,
         payload: res.data
       });
     })
@@ -168,12 +171,12 @@ export const deleteSavedCompany = id => dispatch => {
     });
 };
 
-export const deleteSavedSeeker = id => dispatch => {
+export const deleteSavedSeeker = (ID, userID) => dispatch => {
   dispatch({
     type: DELETE_SAVED_SEEKER_START
   });
   axiosWithAuth()
-    .delete(`/seekers/${id}/saved`)
+    .delete(`/companies/${userID}/saved/${ID}`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({

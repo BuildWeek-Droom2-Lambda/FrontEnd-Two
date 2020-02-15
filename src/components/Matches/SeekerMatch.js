@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
+
+import { connect } from "react-redux";
+
+import { getSavedSeekers, getSavedJobs } from "../../Redux/actions/saved";
 import { Link } from "react-router-dom";
 
-const SeekerMatch = () => {
-  const [savedJobs, setSavedJobs] = useState([]);
-  console.log(savedJobs);
+const SeekerMatch = ({
+  seekerMatches,
+  companyMatches,
+  getSavedSeekers,
+  getSavedJobs
+}) => {
+  // const [savedJobs, setSavedJobs] = useState([]);
+  // console.log(savedJobs);
 
-  // useEffect(() => {
-  //   const userID = localStorage.getItem("userid");
-  //   axios
-  //     .get(
-  //       `https://droom-node-server.herokuapp.com/api/seekers/${userID}/saved`
-  //     )
-
-  //     .then(res => {
-  //       console.log(res);
-  //       setSavedJobs(res.data);
-  //     })
-
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const ID = localStorage.getItem("userID");
+    getSavedJobs(ID);
+  }, []);
 
   // const handleDelete = e => {
   //   let id = e.target.value;
@@ -56,7 +53,7 @@ const SeekerMatch = () => {
       <div className="seeker-matches-page">
         <h1>Your Saved Jobs</h1>
         <div className="jobs">
-          {savedJobs.map(job => {
+          {seekerMatches.map(job => {
             return (
               <div key={job.job_id} className="job-card">
                 <h1>{job.job_name}</h1>
@@ -74,4 +71,13 @@ const SeekerMatch = () => {
   );
 };
 
-export default SeekerMatch;
+const mapStateToProps = state => {
+  return {
+    seekerMatches: state.seekerMatches,
+    companyMatches: state.companyMatches
+  };
+};
+
+export default connect(mapStateToProps, { getSavedSeekers, getSavedJobs })(
+  SeekerMatch
+);
