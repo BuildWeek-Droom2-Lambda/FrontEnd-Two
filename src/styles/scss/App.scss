@@ -22,4 +22,25 @@
     width: 95%;
     padding: 0;
   }
+
+  .no-route-page {
+    background-color: rgba(50, 49, 49, 0.605);
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+    height: 100vh;
+
+    h3 {
+      font-size: 40pt;
+      font-weight: lighter;
+      margin-bottom: 2rem;
+    }
+
+    h4 {
+      font-size: 27pt;
+      font-weight: lighter;
+    }
+  }
 }
