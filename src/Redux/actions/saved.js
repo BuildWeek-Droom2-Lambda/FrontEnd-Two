@@ -130,6 +130,10 @@ export const addSavedJob = (ID, savedJob) => dispatch => {
     ID,
     savedJob
   });
+  console.log(
+    "This is the value of savedJob in the saved action creator: ",
+    savedJob
+  );
   axiosWithAuth()
     .post(`/seekers/${ID}/saved`, savedJob)
     .then(res => {
@@ -148,13 +152,14 @@ export const addSavedJob = (ID, savedJob) => dispatch => {
     });
 };
 
-export const deleteSavedJob = ID => dispatch => {
+export const deleteSavedJob = (ID, jobId) => dispatch => {
   dispatch({
     type: DELETE_SAVED_JOB_START,
-    ID
+    ID,
+    jobId
   });
   axiosWithAuth()
-    .delete(`/seekers/${ID}/saved`)
+    .delete(`/seekers/${ID}/saved/${jobId}`)
     .then(res => {
       console.log("Result of GET request to API: ", res.data);
       dispatch({

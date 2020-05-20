@@ -17,27 +17,35 @@ const SeekerMain = ({
 }) => {
   const [savedJob, setSavedJob] = useState();
 
+
+  // useEffect to get initial array of jobs / user
   useEffect(() => {
     getJobs();
   }, []);
 
-  //   const handleSave = (e, jobs) => {
-  //     const ID = localStorage.getItem("userID");
-  //     const id = e.target.value;
-  //     jobs.filter(job => {
-  // job = job.id !== id
-  //         }
-
-  //         setSavedJob(job);
-  //         addSavedJob(ID, savedJob);
-  //         }
+  const handleSave = e => {
+    const ID = localStorage.getItem("userID");
+    const id = e.target.value;
+    console.log(
+      "This is the value of the target of the event object in SeekerMain.js",
+      e.target.value
+    );
+    const findJob = jobs.filter(job => job.id === id);
+    setSavedJob(findJob);
+    addSavedJob(ID, savedJob);
+  };
 
   const handleDelete = e => {
     e.preventDefault();
-    const ID = localStorage.getItem("userID");
     const id = e.target.value;
-
-    deleteJob(ID, id);
+    const ID = localStorage.getItem("userID");
+    const findJob = jobs.filter(job => job.id === id);
+    const jobId = findJob.id;
+    console.log(
+      "This is the value of id in SeekerMain.js handleSave function: ",
+      jobId
+    );
+    deleteJob(ID, jobId);
   };
 
   const handleClick = () => {
@@ -72,7 +80,7 @@ const SeekerMain = ({
                     <p>{job.description}</p>
                     <div>
                       <button onClick={handleDelete}>X</button>
-                      <button>Save</button>
+                      <button onClick={handleSave}>Save</button>
                     </div>
                   </div>
                 );
